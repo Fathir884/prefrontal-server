@@ -434,16 +434,17 @@
                 `<button onclick="window.deleteComment('${c.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer; padding:5px;" title="Delete Comment"><i data-lucide="trash-2" size="14"></i></button>`
                 : '';
 
+            // Override display:flex from .comment-item with display:block to stack header and text vertically
             const html = `
-                <div class="comment-item dynamic" style="margin-bottom:15px; padding:10px; background:rgba(255,255,255,0.05); border-radius:8px; animation: fadeIn 0.5s ease; position:relative;">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:5px;">
+                <div class="comment-item dynamic" style="display:block; margin-bottom:15px; padding:15px; background:rgba(255,255,255,0.05); border-radius:12px; border:1px solid rgba(255,255,255,0.05); animation: fadeIn 0.5s ease; position:relative;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:8px;">
                         <div>
-                            <strong style="color:white; margin-right:8px;">${escapeHtml(c.name)}</strong> 
+                            <strong style="color:white; margin-right:8px; font-size: 0.95rem;">${escapeHtml(c.name)}</strong> 
                             <span style="font-size:0.75rem; color:#94a3b8;">${c.date}</span>
                         </div>
                         ${deleteBtnHtml}
                     </div>
-                    <p style="margin:0; color:#cbd5e1; font-size:0.95rem; line-height:1.5;">${escapeHtml(c.text)}</p>
+                    <p style="margin:0; color:#cbd5e1; font-size:0.95rem; line-height:1.6;">${escapeHtml(c.text)}</p>
                 </div>`;
 
             commentList.insertAdjacentHTML('afterbegin', html);

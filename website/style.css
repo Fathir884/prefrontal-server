@@ -693,7 +693,7 @@ li {
 .input-comment {
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 16px;
     color: white;
@@ -702,10 +702,12 @@ li {
     min-height: 100px;
     resize: vertical;
     margin-bottom: 16px;
+    transition: all 0.2s ease;
 }
 
 .input-comment:focus {
-    border-color: var(--accent);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.4);
     outline: none;
 }
 
