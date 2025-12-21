@@ -7,15 +7,13 @@ const mongoose = require('mongoose');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+// Use /tmp for serverless environments if needed, but we prefer MongoDB
 const DATA_DIR = path.join(__dirname, 'data');
-const MONGO_URI = process.env.MONGO_URI; // Will be set in Render
+const MONGO_URI = process.env.MONGO_URI;
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json({ limit: '50mb' }));
-
-// Ensure local data dir exists (Fallback)
-fs.ensureDirSync(DATA_DIR);
 
 // --- MongoDB Schema ---
 const backupSchema = new mongoose.Schema({
@@ -27,12 +25,22 @@ const backupSchema = new mongoose.Schema({
 const Backup = mongoose.model('Backup', backupSchema);
 
 // Connect to DB if URI is present
+let isMongoConnected = false;
 if (MONGO_URI) {
     mongoose.connect(MONGO_URI)
-        .then(() => console.log('✅ Connected to MongoDB Atlas'))
+        .then(() => {
+            console.log('✅ Connected to MongoDB Atlas');
+            isMongoConnected = true;
+        })
         .catch(err => console.error('❌ MongoDB Connection Error:', err));
 } else {
     console.log('⚠️ No MONGO_URI found. Running in Local File Mode.');
+    // Only create dir if NOT using Mongo
+    try {
+        fs.ensureDirSync(DATA_DIR);
+    } catch (e) {
+        console.error("Could not create data dir (ignorable if in Vercel):", e.message);
+    }
 }
 
 // --- Routes ---
@@ -40,8 +48,8 @@ if (MONGO_URI) {
 app.get('/', (req, res) => {
     res.json({
         status: 'Online',
-        mode: MONGO_URI ? 'Cloud Database' : 'Local File System',
-        message: 'SuperApp Server is running!'
+        mode: MONGO_URI ? 'Cloud Database (MongoDB)' : 'Local File System',
+        message: 'SuperApp Server is running! 🚀'
     });
 });
 
@@ -74,7 +82,7 @@ app.post('/api/sync/push', async (req, res) => {
         res.json({ success: true, message: 'Backup successful' });
     } catch (error) {
         console.error('Push Error:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: 'Internal server error', details: error.message });
     }
 });
 
@@ -87,7 +95,7 @@ app.get('/api/sync/pull/:username', async (req, res) => {
         if (MONGO_URI) {
             // Cloud Mode
             const doc = await Backup.findOne({ username });
-            if (doc) backup = doc.toObject(); // Convert to clean JSON
+            if (doc) backup = doc.toObject();
         } else {
             // Local Mode
             const backupPath = path.join(DATA_DIR, username, 'backup_latest.json');
@@ -105,7 +113,7 @@ app.get('/api/sync/pull/:username', async (req, res) => {
 
     } catch (error) {
         console.error('Pull Error:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: 'Internal server error', details: error.message });
     }
 });
 
