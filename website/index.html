@@ -367,12 +367,19 @@
 
         // Admin Icon in Nav (Injected dynamically)
         const navActions = document.querySelector('.nav-actions');
+        const hamburgerBtn = document.getElementById('hamburger'); // Get reference to hamburger
+
         const adminBtn = document.createElement('button');
         adminBtn.innerHTML = '<i data-lucide="user" size="20"></i>';
         adminBtn.className = 'btn-icon-only';
-        adminBtn.style.cssText = "background:none; border:none; color:rgba(255,255,255,0.7); cursor:pointer; margin-right:10px;";
+        // Changed margin-right to margin-left to push it away from "Get App"
+        adminBtn.style.cssText = "background:none; border:none; color:rgba(255,255,255,0.7); cursor:pointer; margin-left:15px; margin-right:5px;";
         adminBtn.title = "Developer Login";
-        navActions.insertBefore(adminBtn, navActions.firstChild);
+
+        // Insert BEFORE the hamburger button (so it sits between Get App and Hamburger)
+        // This effectively puts it to the RIGHT of "Get App"
+        navActions.insertBefore(adminBtn, hamburgerBtn);
+
         lucide.createIcons();
 
         // Login Modal Logic
