@@ -124,14 +124,15 @@ const Habits = () => {
         return Math.min(100, Math.round((habit.completedDates.length / daysSinceCreation) * 100));
     };
 
-    const toggleHabitCompletion = (habitId) => {
+    const toggleHabitCompletion = (habitId, targetDate = null) => {
+        const dateToToggle = targetDate || today;
         setHabits(habits.map(habit => {
             if (habit.id === habitId) {
                 const completedDates = habit.completedDates || [];
-                if (completedDates.includes(today)) {
-                    return { ...habit, completedDates: completedDates.filter(d => d !== today) };
+                if (completedDates.includes(dateToToggle)) {
+                    return { ...habit, completedDates: completedDates.filter(d => d !== dateToToggle) };
                 } else {
-                    return { ...habit, completedDates: [...completedDates, today] };
+                    return { ...habit, completedDates: [...completedDates, dateToToggle] };
                 }
             }
             return habit;
@@ -567,7 +568,7 @@ const Habits = () => {
                                         return (
                                             <div key={day.date} style={{ display: 'flex', justifyContent: 'center' }}>
                                                 <button
-                                                    onClick={() => toggleHabit(habit.id, day.date)}
+                                                    onClick={() => toggleHabitCompletion(habit.id, day.date)}
                                                     style={{
                                                         width: '28px',
                                                         height: '28px',
