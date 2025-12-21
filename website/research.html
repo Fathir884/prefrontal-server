@@ -27,20 +27,23 @@
 
         body {
             background-color: #020617;
-            /* Darker than slate-900 */
             overflow-x: hidden;
             background-image:
-                radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.08) 0%, transparent 25%);
+                radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.05) 0%, transparent 25%);
+            margin: 0;
         }
 
-        /* Animated Background Blobs */
+        /* Animated Background Blobs - Optimized */
         .blob {
             position: absolute;
-            filter: blur(80px);
+            filter: blur(60px);
             z-index: -1;
-            opacity: 0.4;
+            opacity: 0.3;
             animation: float 10s infinite ease-in-out;
+            will-change: transform;
+            /* Force GPU Acceleration */
+            transform: translateZ(0);
         }
 
         .blob-1 {
@@ -65,15 +68,15 @@
 
             0%,
             100% {
-                transform: translate(0, 0) scale(1);
+                transform: translate(0, 0);
             }
 
             33% {
-                transform: translate(30px, -50px) scale(1.1);
+                transform: translate(30px, -50px);
             }
 
             66% {
-                transform: translate(-20px, 20px) scale(0.9);
+                transform: translate(-20px, 20px);
             }
         }
 
@@ -100,6 +103,7 @@
             background: linear-gradient(to right, #ffffff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* Glass Cards */
@@ -146,10 +150,11 @@
 
         .journal-content {
             background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 24px;
             padding: 40px;
+            /* Default for Desktop */
+            backdrop-filter: blur(12px);
         }
 
         .meta-grid {
@@ -234,25 +239,7 @@
             transition: all 0.3s ease;
         }
 
-        .framework-card:hover {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(139, 92, 246, 0.3);
-            transform: translateY(-5px);
-        }
-
-        /* Bibtex Box */
-        .bibtex-box {
-            background: #0f172a;
-            padding: 20px;
-            border-radius: 12px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: #64748b;
-            overflow-x: auto;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 40px;
-        }
-
+        /* Mobile Optimization */
         @media (max-width: 768px) {
             .journal-container {
                 grid-template-columns: 1fr;
@@ -264,6 +251,29 @@
 
             .pdf-visual {
                 display: none;
+            }
+
+            /* Performance Fixes for Mobile */
+            .blob {
+                /* Reduce blur radius and animation on mobile */
+                filter: blur(40px);
+                animation: none;
+                /* Disable animation to save GPU */
+                opacity: 0.2;
+            }
+
+            .journal-content {
+                /* Disable backdrop-filter (glass effect) on mobile which is very heavy */
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: #1e293b;
+                /* Fallback opaque color */
+                padding: 24px;
+            }
+
+            .framework-card:hover {
+                transform: none;
+                /* Disable hover movement */
             }
         }
     </style>
