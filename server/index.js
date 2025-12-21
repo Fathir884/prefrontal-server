@@ -3,70 +3,104 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs-extra');
 const path = require('path');
+const mongoose = require('mongoose');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const DATA_DIR = path.join(__dirname, 'data');
+const MONGO_URI = process.env.MONGO_URI; // Will be set in Render
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json({ limit: '50mb' })); // Allow large payloads for backups
+app.use(bodyParser.json({ limit: '50mb' }));
 
-// Ensure data directory exists
+// Ensure local data dir exists (Fallback)
 fs.ensureDirSync(DATA_DIR);
+
+// --- MongoDB Schema ---
+const backupSchema = new mongoose.Schema({
+    username: { type: String, required: true, unique: true },
+    data: { type: Object, required: true },
+    deviceId: String,
+    lastUpdated: { type: Date, default: Date.now }
+});
+const Backup = mongoose.model('Backup', backupSchema);
+
+// Connect to DB if URI is present
+if (MONGO_URI) {
+    mongoose.connect(MONGO_URI)
+        .then(() => console.log('✅ Connected to MongoDB Atlas'))
+        .catch(err => console.error('❌ MongoDB Connection Error:', err));
+} else {
+    console.log('⚠️ No MONGO_URI found. Running in Local File Mode.');
+}
 
 // --- Routes ---
 
-// 1. Health Check
 app.get('/', (req, res) => {
-    res.json({ status: 'Online', message: 'SuperApp Cloud Server is running! 🚀' });
+    res.json({
+        status: 'Online',
+        mode: MONGO_URI ? 'Cloud Database' : 'Local File System',
+        message: 'SuperApp Server is running!'
+    });
 });
 
-// 2. Push Data (Backup)
+// PUSH (Backup)
 app.post('/api/sync/push', async (req, res) => {
     try {
         const { username, data, deviceId, timestamp } = req.body;
+        if (!username || !data) return res.status(400).json({ error: 'Missing data' });
 
-        if (!username || !data) {
-            return res.status(400).json({ error: 'Missing username or data' });
+        if (MONGO_URI) {
+            // Cloud Mode (MongoDB)
+            await Backup.findOneAndUpdate(
+                { username },
+                { data, deviceId, lastUpdated: timestamp || new Date() },
+                { upsert: true, new: true }
+            );
+            console.log(`[CLOUD PUSH] Saved for ${username}`);
+        } else {
+            // Local Mode (File)
+            const userDir = path.join(DATA_DIR, username);
+            await fs.ensureDir(userDir);
+            await fs.writeJson(path.join(userDir, 'backup_latest.json'), {
+                data,
+                lastUpdated: timestamp || new Date().toISOString(),
+                deviceId
+            });
+            console.log(`[LOCAL PUSH] Saved for ${username}`);
         }
 
-        const userDir = path.join(DATA_DIR, username);
-        await fs.ensureDir(userDir);
-
-        // Save latest data
-        await fs.writeJson(path.join(userDir, 'backup_latest.json'), {
-            data,
-            lastUpdated: timestamp || new Date().toISOString(),
-            deviceId
-        });
-
-        // Save history (optional, keep last 5 backups per user?)
-        // For now, simple overwrite model is enough for MVP
-
-        console.log(`[PUSH] Data received for user: ${username}`);
-        res.json({ success: true, message: 'Data synced to cloud successfully.' });
-
+        res.json({ success: true, message: 'Backup successful' });
     } catch (error) {
         console.error('Push Error:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-// 3. Pull Data (Restore)
+// PULL (Restore)
 app.get('/api/sync/pull/:username', async (req, res) => {
     try {
         const { username } = req.params;
-        const userDir = path.join(DATA_DIR, username);
-        const backupPath = path.join(userDir, 'backup_latest.json');
+        let backup = null;
 
-        if (!await fs.pathExists(backupPath)) {
-            return res.status(404).json({ error: 'No backup found for this user.' });
+        if (MONGO_URI) {
+            // Cloud Mode
+            const doc = await Backup.findOne({ username });
+            if (doc) backup = doc.toObject(); // Convert to clean JSON
+        } else {
+            // Local Mode
+            const backupPath = path.join(DATA_DIR, username, 'backup_latest.json');
+            if (await fs.pathExists(backupPath)) {
+                backup = await fs.readJson(backupPath);
+            }
         }
 
-        const backup = await fs.readJson(backupPath);
+        if (!backup) {
+            return res.status(404).json({ error: 'No backup found' });
+        }
 
-        console.log(`[PULL] Data sent for user: ${username}`);
+        console.log(`[PULL] Sending data for ${username}`);
         res.json({ success: true, backup });
 
     } catch (error) {
@@ -75,9 +109,12 @@ app.get('/api/sync/pull/:username', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`
-    ☁️  SuperApp Cloud Server running on http://localhost:${PORT}
-    📂  Data Storage: ${DATA_DIR}
-    `);
-});
+// Local Development
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`🚀 Server running on port ${PORT}`);
+    });
+}
+
+// Export for Vercel
+module.exports = app;
