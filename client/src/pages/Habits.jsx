@@ -566,17 +566,23 @@ const Habits = () => {
                                         const isCompleted = habit.completedDates?.includes(day.date);
                                         return (
                                             <div key={day.date} style={{ display: 'flex', justifyContent: 'center' }}>
-                                                <div style={{
-                                                    width: '28px',
-                                                    height: '28px',
-                                                    borderRadius: '8px',
-                                                    background: isCompleted ? habit.color : 'rgba(255, 255, 255, 0.05)',
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center'
-                                                }}>
+                                                <button
+                                                    onClick={() => toggleHabit(habit.id, day.date)}
+                                                    style={{
+                                                        width: '28px',
+                                                        height: '28px',
+                                                        borderRadius: '8px',
+                                                        background: isCompleted ? habit.color : 'rgba(255, 255, 255, 0.05)',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        border: 'none',
+                                                        cursor: 'pointer',
+                                                        transition: 'all 0.2s'
+                                                    }}
+                                                >
                                                     {isCompleted && <Check size={14} color="#fff" />}
-                                                </div>
+                                                </button>
                                             </div>
                                         );
                                     })}
