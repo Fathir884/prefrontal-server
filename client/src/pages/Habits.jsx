@@ -497,9 +497,19 @@ const Habits = () => {
                             display: 'grid',
                             gridTemplateColumns: '120px repeat(7, 1fr)',
                             gap: '8px',
-                            marginBottom: '12px'
+                            marginBottom: '12px',
+                            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                            paddingBottom: '8px'
                         }}>
-                            <div></div>
+                            <div style={{
+                                display: 'flex',
+                                alignItems: 'end',
+                                fontSize: '12px',
+                                color: '#A0A0B0',
+                                paddingLeft: '8px'
+                            }}>
+                                Habit
+                            </div>
                             {getLast7Days().map(day => (
                                 <div key={day.date} style={{
                                     textAlign: 'center',
@@ -527,19 +537,22 @@ const Habits = () => {
                                     gridTemplateColumns: '120px repeat(7, 1fr)',
                                     gap: '8px',
                                     alignItems: 'center',
-                                    padding: '8px 0',
-                                    borderTop: '1px solid rgba(255, 255, 255, 0.05)'
+                                    padding: '12px 0', // Increased vertical padding slightly
+                                    borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
                                 }}>
                                     <div style={{
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: '8px',
-                                        overflow: 'hidden'
+                                        overflow: 'hidden',
+                                        paddingLeft: '8px'
                                     }}>
-                                        <Icon size={16} color={habit.color} />
+                                        <div style={{ flexShrink: 0 }}>
+                                            <Icon size={16} color={habit.color} />
+                                        </div>
                                         <span style={{
                                             fontSize: '13px',
-                                            color: '#A0A0B0',
+                                            color: '#fff', // White text for better readability
                                             whiteSpace: 'nowrap',
                                             overflow: 'hidden',
                                             textOverflow: 'ellipsis'
