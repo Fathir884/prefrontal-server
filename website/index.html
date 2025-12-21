@@ -336,10 +336,10 @@
         };
 
         // -- FIREBASE CONFIGURATION & LOGIC --
+        // -- ADMIN & FIREBASE LOGIC --
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyAbWQt9WMaxVyFLndqOfJxABp1mUBYFdaU",
             authDomain: "prefrontal-a9952.firebaseapp.com",
@@ -350,65 +350,126 @@
             measurementId: "G-ZG1XPSJGN0"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const commentsRef = collection(db, "comments");
 
-        // UI Elements
+        // Auth State
+        let isAdmin = false;
+        const ADMIN_USER = "admin";
+        const ADMIN_PASS = "prefrontal2025";
+
+        // DOM Elements
         const submitBtn = document.querySelector('.btn-submit');
         const commentList = document.querySelector('.comments-list');
         const nameInput = document.querySelector('.input-name');
         const commentInput = document.querySelector('.input-comment');
 
+        // Admin Icon in Nav (Injected dynamically)
+        const navActions = document.querySelector('.nav-actions');
+        const adminBtn = document.createElement('button');
+        adminBtn.innerHTML = '<i data-lucide="user" size="20"></i>';
+        adminBtn.className = 'btn-icon-only';
+        adminBtn.style.cssText = "background:none; border:none; color:rgba(255,255,255,0.7); cursor:pointer; margin-right:10px;";
+        adminBtn.title = "Developer Login";
+        navActions.insertBefore(adminBtn, navActions.firstChild);
+        lucide.createIcons();
+
+        // Login Modal Logic
+        adminBtn.addEventListener('click', () => {
+            if (isAdmin) {
+                if (confirm("Logout from admin mode?")) {
+                    isAdmin = false;
+                    adminBtn.style.color = "rgba(255,255,255,0.7)";
+                    alert("Logged out.");
+                    // Re-render to hide delete buttons
+                    renderCommentsFromSnapshot(currentSnapshot);
+                }
+            } else {
+                const user = prompt("Enter Username:");
+                if (user === ADMIN_USER) {
+                    const pass = prompt("Enter Password:");
+                    if (pass === ADMIN_PASS) {
+                        isAdmin = true;
+                        adminBtn.style.color = "#a855f7"; // Active color
+                        alert("Access Granted. You can now delete comments.");
+                        // Re-render to show delete buttons
+                        renderCommentsFromSnapshot(currentSnapshot);
+                    } else {
+                        alert("Invalid Credentials.");
+                    }
+                }
+            }
+        });
+
+        // Store snapshot to re-render when auth changes
+        let currentSnapshot = null;
+
         // 1. Real-time Listener (READ)
-        // This runs automatically whenever the database changes
         const q = query(commentsRef, orderBy("createdAt", "desc"));
         onSnapshot(q, (snapshot) => {
-            // Clear existing list except the header/hardcoded ones if you want, 
-            // but for a dynamic app better to clear all and rebuild or append new ones.
-            // For this design, let's keep the hardcoded ones as specific "Highlights" 
-            // and insert the real ones above them or replace them.
-            // Let's replace the dynamic part only.
+            currentSnapshot = snapshot;
+            renderCommentsFromSnapshot(snapshot);
+        });
 
-            // Remove all dynamically added comments first to avoid duplicates on update
+        function renderCommentsFromSnapshot(snapshot) {
+            if (!snapshot) return;
+
+            // Clear dynamic comments and generic generic hardcoded list if desired, 
+            // but for safety we only clear elements we know are dynamic
             const dynamicComments = document.querySelectorAll('.comment-item.dynamic');
             dynamicComments.forEach(el => el.remove());
 
-            snapshot.docs.forEach(doc => {
-                const data = doc.data();
+            snapshot.docs.forEach(docSnap => {
+                const data = docSnap.data();
                 renderComment({
+                    id: docSnap.id, // Need ID for deletion
                     name: data.name,
                     text: data.text,
-                    date: data.createdAt ? new Date(data.createdAt.toDate()).toLocaleDateString() + ' ' + new Date(data.createdAt.toDate()).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Just now'
+                    date: data.createdAt ? new Date(data.createdAt.toDate()).toLocaleDateString() : 'Just now'
                 });
             });
-        });
+            lucide.createIcons();
+        }
 
         // 2. Render Function
         function renderComment(c) {
+            const deleteBtnHtml = isAdmin ?
+                `<button onclick="window.deleteComment('${c.id}')" style="background:none; border:none; color:#ef4444; cursor:pointer; padding:5px;" title="Delete Comment"><i data-lucide="trash-2" size="14"></i></button>`
+                : '';
+
             const html = `
-                <div class="comment-item dynamic" style="margin-bottom:15px; padding:10px; background:rgba(255,255,255,0.05); border-radius:8px; animation: fadeIn 0.5s ease;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                        <strong style="color:white;">${escapeHtml(c.name)}</strong> 
-                        <span style="font-size:0.75rem; color:#94a3b8;">${c.date}</span>
+                <div class="comment-item dynamic" style="margin-bottom:15px; padding:10px; background:rgba(255,255,255,0.05); border-radius:8px; animation: fadeIn 0.5s ease; position:relative;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:5px;">
+                        <div>
+                            <strong style="color:white; margin-right:8px;">${escapeHtml(c.name)}</strong> 
+                            <span style="font-size:0.75rem; color:#94a3b8;">${c.date}</span>
+                        </div>
+                        ${deleteBtnHtml}
                     </div>
                     <p style="margin:0; color:#cbd5e1; font-size:0.95rem; line-height:1.5;">${escapeHtml(c.text)}</p>
                 </div>`;
-            // Insert after the hardcoded ones? Or at the top? 
-            // Let's insert at the TOP of the list for visibility
+
             commentList.insertAdjacentHTML('afterbegin', html);
         }
 
-        // Helper to prevent XSS
+        // Make delete function global window scope so HTML onclick can see it
+        window.deleteComment = async (id) => {
+            if (!isAdmin) return;
+            if (confirm("Permanently delete this comment?")) {
+                try {
+                    await deleteDoc(doc(db, "comments", id));
+                    // UI updates automatically via onSnapshot
+                } catch (err) {
+                    console.error("Error deleting:", err);
+                    alert("Failed to delete.");
+                }
+            }
+        };
+
         function escapeHtml(text) {
             if (!text) return "";
-            return text
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
 
         // 3. Add Comment Function (WRITE)
@@ -421,7 +482,6 @@
                 return;
             }
 
-            // Visual feedback
             const originalBtnText = submitBtn.innerText;
             submitBtn.innerText = "Posting...";
             submitBtn.disabled = true;
@@ -432,11 +492,8 @@
                     text: text,
                     createdAt: serverTimestamp()
                 });
-
-                // Clear inputs
                 nameInput.value = '';
                 commentInput.value = '';
-                // Success feedback handled by real-time listener updating the UI
             } catch (error) {
                 console.error("Error posting comment: ", error);
                 alert("Failed to post comment. Check your connection.");
