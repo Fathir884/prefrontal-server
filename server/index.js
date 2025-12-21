@@ -24,51 +24,77 @@ const backupSchema = new mongoose.Schema({
 });
 const Backup = mongoose.model('Backup', backupSchema);
 
-// Connect to DB if URI is present
-let isMongoConnected = false;
-if (MONGO_URI) {
-    mongoose.connect(MONGO_URI)
-        .then(() => {
-            console.log('✅ Connected to MongoDB Atlas');
-            isMongoConnected = true;
-        })
-        .catch(err => console.error('❌ MongoDB Connection Error:', err));
-} else {
-    console.log('⚠️ No MONGO_URI found. Running in Local File Mode.');
-    // Only create dir if NOT using Mongo
-    try {
-        fs.ensureDirSync(DATA_DIR);
-    } catch (e) {
-        console.error("Could not create data dir (ignorable if in Vercel):", e.message);
+// --- MongoDB Connection (Serverless Pattern) ---
+let cached = global.mongoose;
+if (!cached) {
+    cached = global.mongoose = { conn: null, promise: null };
+}
+
+async function connectDB() {
+    if (!MONGO_URI) return null; // Local mode
+    if (cached.conn) return cached.conn;
+
+    if (!cached.promise) {
+        cached.promise = mongoose.connect(MONGO_URI, {
+            bufferCommands: false, // Penting buat serverless
+            serverSelectionTimeoutMS: 5000
+        }).then((mongoose) => {
+            console.log('✅ New MongoDB Connection');
+            return mongoose;
+        });
     }
+
+    try {
+        cached.conn = await cached.promise;
+    } catch (e) {
+        cached.promise = null; // Reset promise on failure
+        throw e;
+    }
+    return cached.conn;
 }
 
 // --- Routes ---
 
+// Helper to ensure DB or Dir
+async function prepareStorage() {
+    if (MONGO_URI) {
+        await connectDB();
+    } else {
+        try { fs.ensureDirSync(DATA_DIR); } catch (e) { }
+    }
+}
+
 app.get('/', (req, res) => {
     res.json({
         status: 'Online',
-        mode: MONGO_URI ? 'Cloud Database (MongoDB)' : 'Local File System',
+        mode: MONGO_URI ? 'Cloud Database (MongoDB Atlas)' : 'Local File System',
         message: 'SuperApp Server is running! 🚀'
     });
 });
 
 // PUSH (Backup)
 app.post('/api/sync/push', async (req, res) => {
+    // Explicit CORS for Vercel
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
+
     try {
+        await prepareStorage();
+
         const { username, data, deviceId, timestamp } = req.body;
         if (!username || !data) return res.status(400).json({ error: 'Missing data' });
 
         if (MONGO_URI) {
             // Cloud Mode (MongoDB)
+            // Use findOneAndUpdate with upsert to Create or Update
             await Backup.findOneAndUpdate(
                 { username },
                 { data, deviceId, lastUpdated: timestamp || new Date() },
-                { upsert: true, new: true }
+                { upsert: true, new: true, setDefaultsOnInsert: true }
             );
             console.log(`[CLOUD PUSH] Saved for ${username}`);
         } else {
-            // Local Mode (File)
+            // Local Mode
             const userDir = path.join(DATA_DIR, username);
             await fs.ensureDir(userDir);
             await fs.writeJson(path.join(userDir, 'backup_latest.json'), {
@@ -88,7 +114,11 @@ app.post('/api/sync/push', async (req, res) => {
 
 // PULL (Restore)
 app.get('/api/sync/pull/:username', async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Explicit CORS
+
     try {
+        await prepareStorage();
+
         const { username } = req.params;
         let backup = null;
 

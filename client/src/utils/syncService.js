@@ -1,5 +1,5 @@
 export const syncService = {
-    SERVER_URL: 'http://localhost:3000', // Change this to your PC's IP (e.g., http://192.168.1.5:3000) for mobile access
+    SERVER_URL: 'https://prefrontal-server.vercel.app',
 
     async pushData(user) {
         if (!user) throw new Error('User not authenticated');
