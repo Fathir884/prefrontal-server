@@ -1,0 +1,154 @@
+/* Tutorial Overlay CSS */
+.tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    /* Removed background blur as requested, just dim */
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    pointer-events: auto;
+}
+
+/* Glass Card */
+.tutorial-card {
+    position: absolute;
+    /* Changed to absolute for dynamic positioning */
+    background: #1e293b;
+    /* Solid dark background for readability */
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    /* Stronger border */
+    border-radius: 20px;
+    padding: 24px;
+    width: 90%;
+    max-width: 360px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 0 10000px rgba(0, 0, 0, 0.4);
+    /* Spotlight hack? No, simple overlay is fine */
+    /* Use a standard overlay background on parent instead */
+    /* animation: tutorialFadeIn 0.3s ease; -- Disable animation to ensure visibility stability */
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+/* Renamed to avoid index.css conflict */
+@keyframes tutorialFadeIn {
+    from {
+        opacity: 0;
+        margin-top: 10px;
+        /* Use margin instead of transform */
+    }
+
+    to {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+.tutorial-arrow {
+    position: absolute;
+    bottom: -40px;
+    transform: translateX(-50%);
+    animation: bounce 1s infinite;
+    filter: drop-shadow(0 0 10px #8b5cf6);
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+.tutorial-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ai-avatar-glow {
+    background: rgba(139, 92, 246, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+}
+
+.tutorial-header h4 {
+    margin: 0;
+    color: #a78bfa;
+    font-weight: 700;
+    flex: 1;
+    margin-left: 12px;
+}
+
+.skip-btn {
+    background: transparent;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.tutorial-body h3 {
+    color: white;
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+}
+
+.tutorial-body p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+.tutorial-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.step-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #334155;
+    transition: all 0.3s;
+}
+
+.dot.active {
+    background: #8b5cf6;
+    width: 20px;
+    border-radius: 4px;
+}
+
+.btn-next {
+    background: #8b5cf6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-next:hover {
+    background: #7c3aed;
+}

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefrontal: The Productivity SuperApp - Official Release Note</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="../client/public/vite.svg" />
+
+    <!-- Utilities for PDF Generation -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <i data-lucide="brain-circuit" class="logo-icon"></i>
+                <span>Prefrontal.</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Home</a>
+                <a href="#modules">Modules</a>
+                <a href="#specs">Specs</a>
+                <a href="#about">About Me</a>
+                <a href="#comments">Discussion</a>
+            </div>
+            <div class="nav-actions">
+                <a href="Prefrontal-v1.0.apk" download class="btn-primary">
+                    <i data-lucide="download" size="16"></i> Get App
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#features" class="mobile-menu-link">Home</a>
+            <a href="#modules" class="mobile-menu-link">Modules</a>
+            <a href="#specs" class="mobile-menu-link">Specs</a>
+            <a href="#about" class="mobile-menu-link">About Me</a>
+            <a href="#comments" class="mobile-menu-link">Discussion</a>
+            <a href="Prefrontal-v1.0.apk" download class="mobile-menu-download">
+                <i data-lucide="download" size="20"></i>
+                Download App
+            </a>
+        </div>
+    </div>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="badge-wrapper">
+                <span class="badge">✨ STABLE RELEASE v1.0.0</span>
+                <span class="badge badge-secondary">ANDROID</span>
+            </div>
+            <h1>Your Second Brain Has Arrived: Deconstructing Prefrontal SuperApp</h1>
+            <p class="subtitle">How we merged Gemini AI, Financial Management, and Productivity Psychology into a
+                single, cohesive Android experience.</p>
+
+            <div class="meta">
+                <div class="avatar-group">
+                    <img src="https://ui-avatars.com/api/?name=Fathir+Ramadhan&background=a855f7&color=fff"
+                        alt="Fathir Ramadhan" class="avatar">
+                </div>
+                <div class="meta-info">
+                    <span class="author">Published by Fathir Ramadhan</span>
+                    <span class="date">Updated Dec 21, 2025 • 8 min read</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container blog-content">
+
+        <div class="content-block">
+            <p class="lead">Ever feel like your workflow is fragmented? One app for tasks, another for expenses, and a
+                third for AI chat. This context switching kills flow. Today, we're introducing the solution.</p>
+
+            <div class="hero-image-container">
+                <img src="preview.png" alt="Prefrontal Dashboard" class="featured-image">
+                <p class="caption">The Prefrontal Dashboard featuring the "Midnight Blue" theme</p>
+            </div>
+
+            <h2 id="features">Design Philosophy: Why "Prefrontal"?</h2>
+            <p>The name is derived from the <em>Prefrontal Cortex</em>, the part of the human brain responsible for
+                executive functions like planning, decision-making, and focus. This app is designed to be the digital
+                extension of that biological hardware.</p>
+
+            <hr class="divider">
+
+            <!-- MOdules Overview -->
+            <h2 id="modules">App Modules Overview</h2>
+            <p>The application is structured into interconnected modules, each serving a specific cognitive function.
+                Here is a high-level overview:</p>
+
+            <div style="display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 40px;">
+                <div class="changelog-box"
+                    style="border: 1px solid rgba(168, 85, 247, 0.4); background: rgba(168, 85, 247, 0.05);">
+                    <h4 style="color: #c084fc;">🤖 Pref AI Intelligence</h4>
+                    <p>Pref AI is the central brain of the application. It leverages the multimodal capabilities of
+                        <strong>Gemini 1.5 Pro</strong> to offer real-time assistance. Beyond simple conversation, it
+                        features a <strong>RAG (Retrieval-Augmented Generation)</strong> engine, allowing you to upload
+                        PDF documents and receive instant summaries.
+                    </p>
+                </div>
+                <div class="changelog-box">
+                    <h4>📊 Dashboard Command Center</h4>
+                    <p>The Dashboard is designed to be your daily "At-a-Glance" view. It features dynamic <strong>"Vital
+                            Signs"</strong> cards that display your Net Financial Balance (IDR), Active Task Count, and
+                        Journaling Streak.</p>
+                </div>
+                <div class="changelog-box">
+                    <h4>📅 Calendar & Unified Tasks</h4>
+                    <p>We separate <strong>Events</strong> (Fixed-time commitments) from <strong>Tasks</strong>
+                        (Flexible to-dos). The system includes <strong>Local Notifications</strong> that trigger
+                        scheduled alerts even when the app is fully closed.</p>
+                </div>
+                <div class="changelog-box">
+                    <h4>🎓 Learning Center (Focus Engine)</h4>
+                    <p>Productivity requires deep work. The Learning Center combines a customizable <strong>Pomodoro
+                            Timer</strong> with <strong>Focus Soundscapes</strong> (Binaural Beats, Rain, Forest) to
+                        induce Alpha brain waves.</p>
+                </div>
+                <div class="changelog-box">
+                    <h4>💰 Financial Cortex</h4>
+                    <p>A finance tracker adapted for the Indonesian ecosystem (IDR). It features an <strong>Analytics
+                            Tab</strong> with interactive Donut Charts and Trend Lines.</p>
+                </div>
+                <div class="changelog-box">
+                    <h4>🧠 Mind & Wellness</h4>
+                    <p>Your emotional gymnasium. The <strong>Mood Tracker</strong> lets you log daily states to build a
+                        stability graph. Includes daily Stoic Affirmations.</p>
+                </div>
+                <div class="changelog-box"
+                    style="border: 1px solid rgba(255, 71, 87, 0.4); background: rgba(255, 71, 87, 0.05);">
+                    <h4 style="color: #fca5a5;">🎮 Gamification & Arcade Room</h4>
+                    <p>Productivity meets Dopamine. The Arcade Room features <strong>three cognitive training
+                            games</strong>:
+                        <strong>Memory Matrix</strong> for working memory enhancement through pattern recognition,
+                        <strong>Color Connect</strong> for spatial reasoning via path-finding puzzles, and
+                        <strong>Card Match</strong> for short-term memory speed training through number pair matching.
+                        Earn permanent badges and unlock achievements as you progress.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Download Manual CTA -->
+            <div
+                style="background: rgba(139, 92, 246, 0.1); padding: 25px; border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.3); display: flex; align-items: start; gap: 15px; flex-direction: column;">
+                <div style="display:flex; align-items:center; gap:15px; margin-bottom: 10px;">
+                    <i data-lucide="book-open" style="color: #a78bfa; flex-shrink: 0;" size="32"></i>
+                    <div>
+                        <h4 style="margin: 0 0 5px 0; color: #fff;">Need Detailed Instructions?</h4>
+                        <p style="margin: 0; font-size: 0.95rem; color: #cbd5e1;">Download the comprehensive
+                            <strong>10-Chapter PDF Codex</strong>. It covers the philosophy, detailed usage of Pref AI,
+                            and hidden features.
+                        </p>
+                    </div>
+                </div>
+                <button id="btn-download-manual" class="btn-primary"
+                    style="align-self: flex-start; background: #6b21a8; border:none;">
+                    <i data-lucide="file-text" size="16"></i> Download The Codex PDF
+                </button>
+            </div>
+
+            <hr class="divider">
+
+            <h2 id="specs">System Requirements & Technical Stack</h2>
+            <div class="changelog-box" style="margin-top:20px;">
+                <div class="changelog-group">
+                    <h4>📱 Android Requirements</h4>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <i data-lucide="smartphone" size="16" style="color:#a855f7;"></i>
+                            <span><strong>OS Version:</strong> Android 7.0 (Nougat) or higher</span>
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <i data-lucide="cpu" size="16" style="color:#a855f7;"></i>
+                            <span><strong>Processor:</strong> Snapdragon 660 / Helio G80 or equivalent</span>
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <i data-lucide="hard-drive" size="16" style="color:#a855f7;"></i>
+                            <span><strong>RAM:</strong> Minimum 3GB (4GB Recommended)</span>
+                        </li>
+                        <li style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <i data-lucide="save" size="16" style="color:#a855f7;"></i>
+                            <span><strong>Storage:</strong> 150MB Free Space</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="changelog-group"
+                    style="margin-top:20px; padding-top:20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <h4>🛠️ Technology Stack</h4>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <span class="badge feature-badge" style="background: #61DAFB; color: #000;">React Native</span>
+                        <span class="badge feature-badge" style="background: #38bdf8; color: #fff;">TailwindCSS</span>
+                        <span class="badge feature-badge" style="background: #8b5cf6; color: #fff;">Vite</span>
+                        <span class="badge feature-badge" style="background: #14b8a6; color: #fff;">Capacitor</span>
+                        <span class="badge feature-badge" style="background: #f59e0b; color: #fff;">Google Gemini</span>
+                        <span class="badge feature-badge" style="background: #ec4899; color: #fff;">Lucide</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- About Section -->
+            <h2 id="about">About The Developer</h2>
+            <div class="about-card">
+                <div class="about-header">
+                    <img src="https://ui-avatars.com/api/?name=Fathir+Ramadhan&background=a855f7&color=fff&size=128"
+                        alt="Fathir Ramadhan" class="about-avatar">
+                    <div class="about-info">
+                        <h3>Fathir Ramadhan</h3>
+                        <span class="role">Ordinary Student</span>
+                        <p style="margin-top: 10px; color: #94a3b8; line-height: 1.6;">
+                            I am a Library Science student at UIN Syarif Hidayatullah Jakarta with a deep passion
+                            for merging traditional information management with modern technology. My interests lie
+                            at the intersection of digital data systems, software development, and human-centered
+                            design—creating tools that enhance how people interact with information and manage their
+                            daily productivity.
+                        </p>
+                        <p style="margin-top: 10px; color: #94a3b8; line-height: 1.6;">
+                            I was honored as an <strong>International Outstanding Student</strong> by the Faculty of
+                            Adab and Humanities in October 2025. My academic work includes research on
+                            <em>"Artificial Intelligence and College Students Information Seeking Behavior"</em>,
+                            published in the book <em>Digital Humanities & SDGs: Innovations, Challenges, And
+                                Future</em>
+                            (KBM Indonesia, 2025), which I presented at an international conference exploring the
+                            relationship between AI technology and human information-seeking patterns.
+                        </p>
+                        <p style="margin-top: 10px; color: #94a3b8; line-height: 1.6;">
+                            I build productivity applications using React, Node.js, and modern web technologies.
+                            My technical toolkit includes MongoDB for data management, Adobe Creative Suite for design,
+                            and various frameworks for creating seamless user experiences. I'm particularly fascinated
+                            by cognitive psychology and how we can design software that works harmoniously with the
+                            human brain rather than against it.
+                        </p>
+                        <div style="margin-top: 15px; display: flex; gap: 10px;">
+                            <a href="https://www.linkedin.com/in/fathir-ramadhan-b25538271/" target="_blank"
+                                style="color: #cbd5e1; text-decoration: none;"><i data-lucide="linkedin"></i></a>
+                            <a href="mailto:Fathir.ramadhan04@gmail.com"
+                                style="color: #cbd5e1; text-decoration: none;"><i data-lucide="mail"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <!-- Download Section -->
+            <div id="download" class="download-section">
+                <h2>Ready to Upgrade Your Brain?</h2>
+                <p style="max-width: 500px; margin: 0 auto 24px; color: #94a3b8;">Join the beta testers who have shifted
+                    from "Linear Thinking" to "Exponential Execution".</p>
+                <div class="download-meta">Android 7.0+ • V1.0.0 • Free</div>
+
+                <a href="Prefrontal-v1.0.apk" download="Prefrontal-v1.0.apk" class="btn-download-lg">
+                    <div class="btn-icon-wrapper">
+                        <i data-lucide="smartphone" size="24"></i>
+                    </div>
+                    <div class="btn-content">
+                        <span class="btn-primary-text">Download APK</span>
+                        <span class="btn-sub-text">Direct Install</span>
+                    </div>
+                    <div class="btn-arrow">
+                        <i data-lucide="arrow-right" size="18"></i>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Comments -->
+            <div id="comments" class="comments-section">
+                <h3>💬 Community Discussion</h3>
+                <div class="comment-form">
+                    <div class="form-header">
+                        <input type="text" placeholder="Your Name..." class="input-name">
+                    </div>
+                    <textarea placeholder="Write your thoughts..." class="input-comment"></textarea>
+                    <button class="btn-submit">Post Comment</button>
+                </div>
+                <div class="comments-list">
+                    <div class="comment-item"
+                        style="margin-bottom:15px; padding:10px; background:rgba(255,255,255,0.05); border-radius:8px;">
+                        <strong>Sarah Jenkins</strong> <span style="font-size:0.8rem; opacity:0.7;">2 hours ago</span>
+                        <p style="margin-top:5px;">This app completely changed how I study for finals. The PDF RAG
+                            feature is a game changer!</p>
+                    </div>
+                    <div class="comment-item"
+                        style="margin-bottom:15px; padding:10px; background:rgba(255,255,255,0.05); border-radius:8px;">
+                        <strong>Budi Santoso</strong> <span style="font-size:0.8rem; opacity:0.7;">5 hours ago</span>
+                        <p style="margin-top:5px;">Akhirnya ada aplikasi finance yang support format Rupiah dengan
+                            benar. UI nya juga smooth banget.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <strong>Prefrontal.</strong>
+                <p>Copyright &copy; 2025 Fathir Ramadhan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Type module is required for Firebase imports in vanilla JS -->
+    <script type="module">
+        lucide.createIcons();
+        window.onscroll = function () {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.querySelector(".scroll-progress").style.width = scrolled + "%";
+        };
+
+        // -- FIREBASE CONFIGURATION & LOGIC --
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAbWQt9WMaxVyFLndqOfJxABp1mUBYFdaU",
+            authDomain: "prefrontal-a9952.firebaseapp.com",
+            projectId: "prefrontal-a9952",
+            storageBucket: "prefrontal-a9952.firebasestorage.app",
+            messagingSenderId: "481338570992",
+            appId: "1:481338570992:web:13bd91e50f804c4eec6a35",
+            measurementId: "G-ZG1XPSJGN0"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const commentsRef = collection(db, "comments");
+
+        // UI Elements
+        const submitBtn = document.querySelector('.btn-submit');
+        const commentList = document.querySelector('.comments-list');
+        const nameInput = document.querySelector('.input-name');
+        const commentInput = document.querySelector('.input-comment');
+
+        // 1. Real-time Listener (READ)
+        // This runs automatically whenever the database changes
+        const q = query(commentsRef, orderBy("createdAt", "desc"));
+        onSnapshot(q, (snapshot) => {
+            // Clear existing list except the header/hardcoded ones if you want, 
+            // but for a dynamic app better to clear all and rebuild or append new ones.
+            // For this design, let's keep the hardcoded ones as specific "Highlights" 
+            // and insert the real ones above them or replace them.
+            // Let's replace the dynamic part only.
+
+            // Remove all dynamically added comments first to avoid duplicates on update
+            const dynamicComments = document.querySelectorAll('.comment-item.dynamic');
+            dynamicComments.forEach(el => el.remove());
+
+            snapshot.docs.forEach(doc => {
+                const data = doc.data();
+                renderComment({
+                    name: data.name,
+                    text: data.text,
+                    date: data.createdAt ? new Date(data.createdAt.toDate()).toLocaleDateString() + ' ' + new Date(data.createdAt.toDate()).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Just now'
+                });
+            });
+        });
+
+        // 2. Render Function
+        function renderComment(c) {
+            const html = `
+                <div class="comment-item dynamic" style="margin-bottom:15px; padding:10px; background:rgba(255,255,255,0.05); border-radius:8px; animation: fadeIn 0.5s ease;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                        <strong style="color:white;">${escapeHtml(c.name)}</strong> 
+                        <span style="font-size:0.75rem; color:#94a3b8;">${c.date}</span>
+                    </div>
+                    <p style="margin:0; color:#cbd5e1; font-size:0.95rem; line-height:1.5;">${escapeHtml(c.text)}</p>
+                </div>`;
+            // Insert after the hardcoded ones? Or at the top? 
+            // Let's insert at the TOP of the list for visibility
+            commentList.insertAdjacentHTML('afterbegin', html);
+        }
+
+        // Helper to prevent XSS
+        function escapeHtml(text) {
+            if (!text) return "";
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // 3. Add Comment Function (WRITE)
+        submitBtn.addEventListener('click', async () => {
+            const name = nameInput.value.trim();
+            const text = commentInput.value.trim();
+
+            if (!name || !text) {
+                alert("Please enter both your name and a comment!");
+                return;
+            }
+
+            // Visual feedback
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = "Posting...";
+            submitBtn.disabled = true;
+
+            try {
+                await addDoc(commentsRef, {
+                    name: name,
+                    text: text,
+                    createdAt: serverTimestamp()
+                });
+
+                // Clear inputs
+                nameInput.value = '';
+                commentInput.value = '';
+                // Success feedback handled by real-time listener updating the UI
+            } catch (error) {
+                console.error("Error posting comment: ", error);
+                alert("Failed to post comment. Check your connection.");
+            } finally {
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // -- CODEX GENERATOR (Detailed) --
+        document.getElementById('btn-download-manual').addEventListener('click', async () => {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const pageWidth = 210;
+            const margin = 15;  // Reduced from 20 to 15
+            const maxLineWidth = pageWidth - margin * 2;
+            let yPos = 25;  // Reduced initial position
+
+            const checkPageBreak = (height = 15) => {
+                if (yPos + height >= 280) {  // Increased from 270 to 280
+                    doc.addPage();
+                    yPos = 25;  // Reduced from 30 to 25
+                    // Page header - clean and readable
+                    doc.setFontSize(8);
+                    doc.setTextColor(100, 100, 100);
+                    doc.setFont('helvetica', 'normal');
+                    doc.text("Prefrontal: The Productivity SuperApp Manual", margin, 10);
+                    doc.setTextColor(0, 0, 0);  // Reset to black
+                }
+            };
+
+            const addChapterTitle = (num, text) => {
+                doc.addPage();
+                yPos = 40;  // Reduced from 60
+                doc.setFontSize(60);  // Reduced from 80
+                doc.setTextColor(200, 200, 220);
+                doc.setFont('helvetica', 'bold');
+                doc.text(num, margin, yPos);
+                yPos += 12;  // Reduced from 15
+                doc.setFontSize(20);  // Reduced from 24
+                doc.setTextColor(0, 0, 0);
+                doc.text(text, margin, yPos);
+                yPos += 15;  // Reduced from 20
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.setTextColor(60, 60, 60);
+            };
+
+            const addSectionTitle = (text) => {
+                checkPageBreak(35);  // Increased to ensure title + at least 2 lines of content
+                yPos += 6;
+                doc.setFontSize(13);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(40, 40, 50);
+                doc.text(text, margin, yPos);
+                yPos += 5;
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(11);
+                doc.setTextColor(60, 60, 60);
+            };
+
+            const addParagraph = (text) => {
+                const lines = doc.splitTextToSize(text, maxLineWidth);
+                const lineHeight = 5;  // Reduced from 6
+                const height = lines.length * lineHeight;
+                checkPageBreak(height + 3);  // Reduced from 5
+                doc.text(lines, margin, yPos);
+                yPos += height + 3;  // Reduced spacing after paragraph
+            };
+
+            const addBullet = (title, text) => {
+                doc.setFont('helvetica', 'bold');
+                const bulletPrefix = `• ${title}:`;
+                doc.text(bulletPrefix, margin, yPos);
+                const titleWidth = doc.getTextWidth(bulletPrefix) + 2;
+                const descriptionMaxWidth = maxLineWidth - titleWidth;
+                doc.setFont('helvetica', 'normal');
+                const lines = doc.splitTextToSize(text, descriptionMaxWidth);
+                if (lines.length === 1) {
+                    doc.text(text, margin + titleWidth, yPos);
+                    yPos += 6;  // Reduced from 8
+                } else {
+                    doc.text(lines[0], margin + titleWidth, yPos);
+                    for (let i = 1; i < lines.length; i++) {
+                        yPos += 5;  // Reduced from 6
+                        if (yPos >= 280) { doc.addPage(); yPos = 25; }
+                        doc.text(lines[i], margin, yPos);
+                    }
+                    yPos += 6;  // Reduced from 8
+                }
+                checkPageBreak(4);
+            };
+
+            // -- Cover --
+            doc.setFillColor(15, 15, 26); doc.rect(0, 0, 210, 297, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(42); doc.setFont('helvetica', 'bold'); doc.text("Prefrontal", 105, 100, { align: 'center' });
+            doc.setFontSize(18); doc.setFont('helvetica', 'normal'); doc.text("The Codex", 105, 115, { align: 'center' });
+            doc.setFontSize(10); doc.text("Authored by Fathir Ramadhan", 105, 270, { align: 'center' });
+
+            // -- TOC --
+            doc.addPage(); doc.setTextColor(0, 0, 0); doc.setFontSize(20); doc.text("Table of Contents", margin, 40);
+            const chapters = ["01. Philosophy", "02. Dashboard", "03. Calendar & Tasks", "04. Pref AI", "05. Learning", "06. Finance", "07. Mind", "08. Habits", "09. Gamification", "10. Privacy"];
+            yPos = 60; doc.setFontSize(12);
+            chapters.forEach(c => { doc.text(c, margin, yPos); yPos += 12; });
+
+            // -- Content (Comprehensive & Detailed) --
+
+            // ========== CHAPTER 1: PHILOSOPHY ==========
+            addChapterTitle("01", "The Philosophy");
+            addSectionTitle("The Myth of Multitasking");
+            addParagraph("The human brain is optimized for serial processing, not parallel multitasking. Modern productivity tools often fragment our attention by forcing us to switch contexts constantly—jumping from a budgeting app to a calendar, then to a habit tracker. This 'Context Switching' incurs a heavy metabolic cost, depleting glucose and reducing our functional IQ by up to 10 points according to cognitive neuroscience research.");
+            addParagraph("The Prefrontal SuperApp is designed to mitigate this by unifying all essential cognitive tools into one interface. By consolidating Finance, Scheduling, Learning, Wellness, and AI into a single ecosystem, we eliminate the friction of app-switching. This allows you to enter a 'Flow State' faster and maintain it longer. The app acts as a 'Digital Prefrontal Cortex', handling executive functions so your biological brain remains free for creative and deep work.");
+            addSectionTitle("Design Principles");
+            addParagraph("Every feature in Prefrontal follows three core principles: 1) Reduce Cognitive Load - Present only essential information at the right time. 2) Create Frictionless Actions - Minimize steps between intention and execution. 3) Leverage Psychology - Use behavioral science to build sustainable productivity habits, not just temporary motivation.");
+            addSectionTitle("Why 'Prefrontal'?");
+            addParagraph("The prefrontal cortex is responsible for executive functions: planning, decision-making, impulse control, and working memory. This app digitizes those functions. When you track your finances, you're externalizing 'Financial Planning'. When you set a task reminder, you're outsourcing 'Prospective Memory'. The goal is cognitive augmentation, not replacement.");
+
+            // ========== CHAPTER 2: DASHBOARD ==========
+            addChapterTitle("02", "Home Dashboard");
+            addParagraph("The Dashboard follows the principles of 'Cognitive Ergonomics'. Most interfaces bombard users with irrelevant notifications and clutter. Prefrontal's dashboard answers one critical question: 'What is my immediate state right now?' It provides maximum situational awareness with minimum cognitive load.");
+            addSectionTitle("Vital Signs Cards");
+            addParagraph("The top section displays three real-time metrics that give you an instant health check of your productivity ecosystem:");
+            addBullet("Financial Pulse", "Displays your real-time Net Balance (Total Income minus Total Expenses). It uses color-coded visual cues: Green indicates a surplus (you're saving), Red signals a deficit (spending more than earning), and Yellow shows break-even. This triggers an immediate 'Loss Aversion' response—a psychological principle where losses feel twice as painful as equivalent gains. Seeing red naturally motivates corrective spending behavior.");
+            addBullet("Task Load", "Shows the number of incomplete tasks with deadlines set for TODAY ONLY. It prevents 'Task Paralysis' by hiding future obligations and focusing your attention solely on immediate actionable items. The number turns red when exceeding 5 tasks, signaling cognitive overload.");
+            addBullet("Mental Streak", "Tracks consecutive days of mood logging in the Mind & Wellness module. This leverages the 'Endowment Effect'—the psychological tendency to value what we already own. The longer your streak, the more painful it becomes to break it, creating a self-sustaining motivation loop.");
+            addSectionTitle("Quick Actions Grid");
+            addParagraph("Below the Vital Signs, you'll find a 2x2 grid of large, color-coded action buttons. Each button is a direct portal to a deep module: Finance (Green), Learning (Purple), Habits (Orange), Mind (Blue). This design reduces 'Time-to-Action' latency—the delay between wanting to do something and actually doing it. Instead of navigating through multiple menus, you're one tap away from your goal.");
+            addSectionTitle("Dynamic Greeting");
+            addParagraph("The dashboard header displays a time-aware personalized greeting: 'Good Morning, [Your Name]' (5AM-12PM), 'Good Afternoon' (12PM-5PM), or 'Good Evening' (5PM-5AM). This small touch humanizes the interface and creates a welcoming ritual every time you open the app.");
+
+            // ========== CHAPTER 3: CALENDAR & TASKS ==========
+            addChapterTitle("03", "Calendar & Tasks");
+            addSectionTitle("Dual-System Architecture");
+            addParagraph("Most productivity apps conflate 'Events' and 'Tasks', but the brain processes them differently. Prefrontal separates them into two distinct cognitive buckets:");
+            addBullet("Event Calendar (Hard Landscape)", "For non-negotiable, time-specific commitments like 'Doctor Appointment at 2 PM' or 'Meeting with Client at 10 AM'. These are visualized on a Monthly Calendar with density dots—small colored circles appear on dates with events, allowing you to gauge your schedule density at a glance. Tapping any date reveals that day's events in chronological order.");
+            addBullet("Task List (Soft Landscape)", "For flexible to-dos that just need completion, like 'Finish Report' or 'Buy Groceries'. Each task can be tagged with High (Red), Medium (Yellow), or Low (Green) priority. Completing a task triggers haptic feedback (a gentle vibration) combined with a visual checkmark animation, releasing a small dopamine reward that reinforces the behavior.");
+            addSectionTitle("Adding Events");
+            addParagraph("To add an event: 1) Tap the floating '+' button. 2) Enter the event title (e.g., 'Team Standup'). 3) Select the date using the calendar picker. 4) Set the time using the time wheel. 5) Optionally toggle 'Notification' to receive an alert 15 minutes before the event. The system uses native Android notifications that work even when the app is closed.");
+            addSectionTitle("Adding Tasks");
+            addParagraph("To add a task: 1) Tap 'Add Task' in the Tasks tab. 2) Write a clear, actionable description (e.g., 'Draft Chapter 3 of Thesis'). 3) Assign a priority level. 4) Set an optional due date for deadline tracking. Tasks without due dates remain in the 'Someday' category, preventing them from cluttering your daily view.");
+            addSectionTitle("Local System Notifications");
+            addParagraph("Crucially, Prefrontal includes 'Local Push Notifications'. When you set a reminder for an event or task, the app schedules an Android system notification. This means even if the app is fully closed or your phone is locked, you'll still receive the alert at the exact time. This offloads the 'Prospective Memory' function (remembering to do something in the future) from your brain to your device.");
+            addSectionTitle("Recurring Events");
+            addParagraph("Currently, Prefrontal supports manual creation of events. For recurring commitments (e.g., 'Monday Meetings'), simply create the event once, then duplicate it for future dates. Future updates will include one-click recurring event templates.");
+
+            // ========== CHAPTER 4: PREF AI ==========
+            addChapterTitle("04", "Pref AI Intelligence");
+            addParagraph("Pref AI is not a generic chatbot—it is the Central Nervous System of Prefrontal. Powered by Google's Gemini 1.5 Pro, it offers multimodal intelligence with conversational fluency, document analysis, and contextual awareness of your personal data.");
+            addSectionTitle("Contextual Awareness");
+            addParagraph("Unlike standard AI assistants, Pref AI has read-access to your app state. If you ask 'Why am I stressed?', it doesn't give generic advice. Instead, it intelligently checks: (1) Your Task Load—are you overcommitted? (2) Your recent Mood Logs—have you been consistently logging negative emotions? (3) Your Financial Balance—is money pressure a factor? It then synthesizes this data into a personalized, evidence-based response.");
+            addParagraph("Example queries you can ask: 'Summarize my spending this month', 'What tasks do I have today?', 'Why is my mood streak broken?', 'Give me a motivational quote for procrastination', 'How can I improve my focus for studying?'. The AI acts as a rational accountability partner, helping you debug your own life using first-principles thinking.");
+            addSectionTitle("RAG Engine (PDF Analysis)");
+            addParagraph("The Retrieval-Augmented Generation (RAG) engine transforms Pref AI into a 'Second Brain' for knowledge work. You can upload PDF documents—lecture slides, research papers, legal contracts, textbooks—and the AI will digest them instantly.");
+            addSectionTitle("How to Use PDF Analysis");
+            addParagraph("Step 1: Tap the 'paperclip' icon in the Pref AI chat interface. Step 2: Select a PDF from your device storage (max 10MB, up to 50 pages recommended for optimal performance). Step 3: The AI will process the document in 3-5 seconds. Step 4: You can now chat with the document.");
+            addBullet("Summarization", "Ask 'Summarize this document in 5 bullet points' to get a rapid overview without reading the entire file. Useful for condensing academic papers or meeting notes.");
+            addBullet("Interrogation", "Ask specific questions like 'What is the methodology used in Chapter 3?' or 'List all deadlines mentioned'. The AI scans the document and provides cited answers with page references.");
+            addBullet("Comprehension", "Ask 'Explain the concept of X in simple terms' to break down complex jargon into beginner-friendly language.");
+            addSectionTitle("Conversation Memory");
+            addParagraph("Pref AI maintains conversation context within a session. You can ask follow-up questions like 'What about Y?' and it will remember you were discussing topic X. However, note that context resets when you close the app. For persistent knowledge, use the PDF upload feature.");
+
+            // ========== CHAPTER 5: LEARNING CENTER ==========
+            addChapterTitle("05", "Learning Center");
+            addParagraph("The Learning Center is your 'Focus Engine', designed to facilitate Deep Work and efficient memory encoding. It combines time-management techniques with auditory focus aids and active learning tools.");
+            addSectionTitle("Pomodoro Timer 2.0");
+            addParagraph("Based on Francesco Cirillo's Pomodoro Technique, this timer structures your study/work sessions into focused intervals separated by short breaks. Research shows that the brain's attention span peaks around 25-45 minutes before fatigue sets in.");
+            addParagraph("How to use: 1) Select your work duration (15, 25, 45, or 60 minutes). 2) Tap 'Start Focus'. The timer begins counting down. 3) Work uninterrupted until the timer rings. 4) Take a 5-minute break (or 15 minutes after 4 consecutive sessions). 5) Repeat.");
+            addParagraph("When the timer completes, you'll receive a notification with a brief musical chime. This auditory signal trains your brain to associate the sound with task completion, creating a Pavlovian reward loop. Your dashboard tracks total Pomodoros completed for gamified progress.");
+            addSectionTitle("Focus Soundscapes");
+            addParagraph("The built-in audio engine offers 5 high-fidelity soundscapes designed to mask distracting environmental noise and induce Alpha brain waves (8-12 Hz), the frequency associated with relaxed focus:");
+            addBullet("Rain", "Gentle rainfall with distant thunder. Ideal for reading or light coding work.");
+            addBullet("Forest", "Ambient bird calls and rustling leaves. Perfect for creative thinking or brainstorming.");
+            addBullet("Ocean Waves", "Rhythmic wave crashes. Recommended for meditation or writing.");
+            addBullet("White Noise", "Pure static noise that masks sudden sounds. Best for noisy environments like cafes.");
+            addBullet("Binaural Beats", "Stereo frequency tones that sync left/right brain hemispheres. Use with headphones for maximum effect.");
+            addParagraph("To use: Tap the 'soundscape' icon in Learning Center, select your preferred sound, and adjust volume. Sounds loop continuously until manually stopped. You can run soundscapes simultaneously with the Pomodoro timer.");
+            addSectionTitle("Study Task Manager");
+            addParagraph("The Learning module includes a mini task manager specifically for study goals. Unlike the main Task module, these tasks track percentage-based progress. For example, 'Read Chapters 1-10' can be marked as 30% complete after reading 3 chapters. This visual progress bar provides incremental dopamine hits, combating procrastination on large projects.");
+            addSectionTitle("Flashcard System");
+            addParagraph("Passive re-reading is the least effective study method. Prefrontal uses 'Active Recall'—forcing your brain to retrieve information strengthens neural pathways. To create a flashcard: 1) Tap 'Add Flashcard'. 2) Enter the question ('What is the capital of France?'). 3) Enter the answer ('Paris'). 4) Save. To study: tap 'Review', see the question, mentally answer, then flip the card to check. Mark 'Correct' or 'Incorrect' to track mastery.");
+
+            // ========== CHAPTER 6: FINANCIAL CORTEX ==========
+            addChapterTitle("06", "Financial Cortex");
+            addParagraph("Money triggers strong emotional responses—fear, guilt, greed. The Financial Cortex uses principles from Behavioral Economics to hack your spending psychology and build intuitive wealth habits.");
+            addSectionTitle("Frictionless Logging Philosophy");
+            addParagraph("The #1 reason budgets fail is friction. Entering transactions feels tedious, so people skip it, and the system collapses. Prefrontal's 'Speed Logger' eliminates friction: the entire input flow (Amount → Category → Save) takes under 3 seconds. The interface is optimized for thumbs, with large tap targets and auto-formatting.");
+            addSectionTitle("Adding Transactions");
+            addParagraph("To log an expense: 1) Tap the green '+' button. 2) Enter the amount (e.g., type '50000' and it auto-formats to 'Rp 50.000'). 3) Tap a category button (Food, Transport, Entertainment, Health, Shopping, Bills, or Other). 4) Hit 'Save'. Done. The transaction instantly appears in your timeline and updates your Net Balance card on the Dashboard.");
+            addParagraph("To log income: The flow is identical, but tap 'Income' instead of 'Expense' before selecting a category. Income categories include Salary, Freelance, Investment, Gift, or Other.");
+            addSectionTitle("Transaction History");
+            addParagraph("The 'Transactions' tab displays a reverse-chronological feed of all financial activity. Each entry shows: Amount, Category (with color-coded icon), Date, and Type (Income/Expense). You can delete any transaction by long-pressing and confirming. Use the search bar to filter by category or date range (e.g., 'Show all Food expenses in December').");
+            addSectionTitle("Financial Goals");
+            addParagraph("The Goals feature helps you save toward specific targets. To create a goal: 1) Tap 'Add Goal'. 2) Name it (e.g., 'New Laptop'). 3) Set the target amount (e.g., Rp 5.000.000). 4) Optionally set a deadline. The system tracks your progress by calculating: (Current Savings / Target Amount) × 100. A visual progress bar fills as you approach your goal, providing tangible motivation.");
+            addSectionTitle("Visual Analytics Tab");
+            addParagraph("The 'Analytics' section transforms raw numbers into actionable insights. It includes:");
+            addBullet("Donut Chart (Spending Breakdown)", "Visualizes what percentage of your expenses go to each category. If 'Food' is 50% of your pie, you know where to cut. Colors match category icons for instant recognition.");
+            addBullet("Trend Line (7-Day Spending Velocity)", "A line graph showing daily spending over the past week. A steep upward slope = you're burning money fast. A flat line = stable spending. This helps you spot patterns (e.g., 'I always overspend on weekends').");
+            addBullet("Income vs Expense Bar Chart", "Side-by-side monthly comparison. If the Expense bar towers over Income, you're in deficit mode. Visual comparison is faster than reading numbers.");
+            addSectionTitle("Indonesian Market Optimization");
+            addParagraph("Prefrontal is specifically designed for Indonesian users. All amounts use 'Rp' prefix, thousand separators (50.000 instead of 50,000), and no decimal cents (since Rupiah doesn't use them in daily transactions). Category presets reflect local spending patterns (e.g., 'Ojek Online' transport, 'Warung' food).");
+
+            // ========== CHAPTER 7: MIND & WELLNESS ==========
+            addChapterTitle("07", "Mind & Wellness");
+            addSectionTitle("The Neuroscience of Emotion");
+            addParagraph("The Limbic System (your 'emotional brain') often hijacks the Prefrontal Cortex (your 'rational brain'). When you're angry, sad, or anxious, you make poor decisions. The Mind module helps you regulate emotions using evidence-based techniques from psychology and neuroscience.");
+            addSectionTitle("Mood Tracker");
+            addParagraph("Research shows that simply naming an emotion ('I feel anxious') activates the Prefrontal Cortex and reduces Amygdala activity—literally calming your brain. This is called 'Affect Labeling' or 'Name it to Tame it'.");
+            addParagraph("How to log your mood: 1) Tap the Mind module. 2) Select your current emotional state from the emoji grid (Happy, Calm, Sad, Anxious, Angry, Energized). 3) Optionally add a 1-2 sentence note explaining WHY you feel this way (Micro-Journal). 4) Save. Your streak counter increments, and the mood is logged with a timestamp.");
+            addParagraph("Over time, the Mood History chart visualizes your emotional patterns. You might notice 'I'm always anxious on Sunday nights' (anticipating work) or 'I'm happiest after exercise'. These insights help you engineer your environment for emotional stability.");
+            addSectionTitle("Micro-Journaling");
+            addParagraph("Traditional journaling feels overwhelming ('Write 500 words about your day'). Micro-Journaling reduces the friction: just write 1-2 sentences answering 'Why do I feel this way?'. Examples: 'Anxious because deadline tomorrow', 'Happy because I completed my workout', 'Sad after argument with friend'. These tiny data points accumulate into a rich emotional diary without the pressure.");
+            addSectionTitle("Stoic Affirmations");
+            addParagraph("Every day, the Mind module displays a rotating quote from Stoic philosophers (Marcus Aurelius, Seneca, Epictetus). Stoicism teaches: 'You cannot control external events, only your response to them.' Reading these daily primes your brain to focus on what's within your control, reducing anxiety about uncontrollable factors. Tap the quote to save it to Favorites for future re-reading.");
+            addSectionTitle("Breathing Exercise");
+            addParagraph("The '4-7-8 Breathing' technique activates the Parasympathetic Nervous System, triggering relaxation. Instructions: 1) Inhale through nose for 4 seconds. 2) Hold breath for 7 seconds. 3) Exhale through mouth for 8 seconds. 4) Repeat 4 cycles. The app includes a visual breathing guide with animated circles that expand/contract to pace your breath. Use this during panic attacks or before sleep.");
+
+            // ========== CHAPTER 8: ATOMIC HABITS ==========
+            addChapterTitle("08", "Atomic Habits");
+            addParagraph("James Clear's book 'Atomic Habits' teaches that success is not about one-time heroic efforts—it's about small, consistent actions compounded over time. The Habits module is built on this philosophy.");
+            addSectionTitle("The Seinfeld Strategy");
+            addParagraph("Comedian Jerry Seinfeld used a simple trick to write jokes daily: He marked a big X on his calendar every day he wrote. After a few days, he had a 'chain' of Xs. His only rule: Don't break the chain. Prefrontal digitizes this concept with streak tracking.");
+            addSectionTitle("Creating a Habit");
+            addParagraph("To add a habit: 1) Tap 'Add Habit'. 2) Name it (e.g., 'Drink 2L Water'). 3) Choose an icon (Droplet, Dumbbell, Book, Meditation, etc.). 4) Set frequency (Daily, Weekly, or Custom). 5) Save. The habit appears on your Habits dashboard with a flame icon and current streak counter (starts at 0).");
+            addSectionTitle("Marking Habits Complete");
+            addParagraph("Every day, your habit list shows checkbox buttons. Tap the checkbox when you complete the habit. The flame icon lights up with a glowing animation, and the streak number increments (+1). If you miss a day, the streak resets to 0, and the flame 'burns out' with a fade animation. This visual loss creates emotional stakes, motivating consistency.");
+            addSectionTitle("Habit Streaks Psychology");
+            addParagraph("Why do streaks work? Two reasons: 1) Endowment Effect—the longer your streak, the more 'valuable' it feels, making you guard it fiercely. 2) Cognitive Dissonance—breaking a 30-day streak feels painful (you wasted 30 days of effort), so your brain works overtime to avoid that pain by maintaining the habit.");
+            addSectionTitle("Identity-Based Habits");
+            addParagraph("Clear teaches: 'Don't focus on goals (I want to run a marathon). Focus on identity (I am a runner).' When you customize your habit with an icon (e.g., running shoe for jogging), you're reinforcing that identity. Every streak day validates: 'I am the type of person who does this.'");
+            addSectionTitle("Best Practices");
+            addParagraph("1) Start small—don't create 10 habits at once. Master 2-3 first. 2) Stack habits—attach new habits to existing routines ('After I brush my teeth [existing], I will meditate [new]'). 3) Never break twice—if you miss one day, NEVER miss two in a row. 4) Celebrate small wins—even a 3-day streak is progress worth acknowledging.");
+
+            // ========== CHAPTER 9: GAMIFICATION ==========
+            addChapterTitle("09", "Gamification & Arcade");
+            addParagraph("Productivity often feels like eating vegetables—good for you, but boring. The Arcade injects fun into mundane tasks by gamifying them. You earn points, unlock achievements, and train cognitive skills through three specialized mini-games.");
+            addSectionTitle("Why Gamification Works");
+            addParagraph("Games trigger dopamine release through: 1) Clear Goals (complete level). 2) Immediate Feedback (score increases). 3) Sense of Progression (unlock new content). By applying these mechanics to productivity, we make 'work' feel like 'play', sustaining motivation long after initial willpower fades.");
+
+            addSectionTitle("Game 1: Memory Matrix");
+            addParagraph("This cognitive training game tests and improves your 'Working Memory'—the mental scratchpad that holds information temporarily. How to play: 1) A 3x3 grid of tiles appears. 2) Some tiles flash blue for 2 seconds. 3) The grid goes blank. 4) You must tap the tiles that were blue. 5) Correct answers increase difficulty (more tiles, faster flash). You earn points for accuracy and speed.");
+            addParagraph("Why train working memory? Research shows it correlates with fluid intelligence (problem-solving ability), academic performance, and even impulse control. Playing 10 minutes daily can measurably improve your cognitive capacity.");
+
+            addSectionTitle("Game 2: Color Connect");
+            addParagraph("A spatial reasoning puzzle game that enhances executive function and strategic planning. How to play: 1) A grid displays pairs of colored dots. 2) Your goal is to connect each matching pair with a continuous path. 3) Paths cannot cross or overlap. 4) All grid cells must be filled. The game forces you to think multiple steps ahead, planning routes that don't block other paths.");
+            addParagraph("This trains: Path planning (essential for project management), Spatial visualization (used in STEM fields), Problem-solving under constraints (critical thinking). The game mimics real-world scenarios where you must optimize multiple competing priorities.");
+
+            addSectionTitle("Game 3: Card Match");
+            addParagraph("A speed-based memory game that sharpens short-term recall and visual processing. How to play: 1) A grid of number cards is revealed for 3 seconds. 2) All cards flip face-down. 3) You must find matching number pairs by remembering their positions. 4) Each level reduces preview time or increases grid size, ramping up difficulty.");
+            addParagraph("Benefits: Visual memory enhancement (remembering faces, names, locations), Recall speed improvement (faster information retrieval), Attention to detail (noticing patterns quickly). This is particularly useful for students memorizing diagrams or professionals juggling multiple client details.");
+
+            addSectionTitle("Trophy Room & Achievements");
+            addParagraph("The Trophy Room displays permanent badges you unlock through app usage. Examples:");
+            addBullet("First Steps", "Log your first transaction in Finance.");
+            addBullet("Focus Warrior", "Complete 10 Pomodoro sessions.");
+            addBullet("Stoic Mind", "Log mood for 7 consecutive days.");
+            addBullet("Habit Champion", "Reach a 30-day streak on any habit.");
+            addBullet("Knowledge Seeker", "Upload 5 PDFs to Pref AI.");
+            addBullet("Arcade Master", "Complete all 3 levels in Memory Matrix, Color Connect, and Card Match.");
+            addParagraph("Badges satisfy the brain's need for status and progression. They create 'Extrinsic Motivation' (doing something for a reward) that eventually transitions to 'Intrinsic Motivation' (doing it because you genuinely enjoy it).");
+            addSectionTitle("Leaderboard (Future Feature)");
+            addParagraph("Future versions will include optional social leaderboards where you can compare stats (e.g., total Pomodoros, longest streak, arcade high scores) with friends. This adds healthy competition and accountability.");
+
+            // ========== CHAPTER 10: PRIVACY & DATA ==========
+            addChapterTitle("10", "Data Privacy & Security");
+            addParagraph("In an era of surveillance capitalism where apps harvest your data to sell to advertisers, Prefrontal takes a radically different stance: Your data is sacred. We adopt a 'Local-First' architecture where your information never leaves your device unless you explicitly choose to share it.");
+            addSectionTitle("Local-First Architecture");
+            addParagraph("All your data—financial transactions, mood logs, tasks, habits, journal entries—is stored locally in an SQLite database on your Android device. This means: 1) No cloud syncing by default (we don't have access to your data). 2) No internet required (the app works fully offline). 3) Instant performance (no server lag). 4) Complete ownership (you control backups and exports).");
+            addSectionTitle("Data You Can Trust");
+            addParagraph("We do NOT: Sell your data to third parties. Track your behavior for advertising. Require account creation or email. Use cloud analytics that harvest usage patterns. We DO: Encrypt sensitive fields (journal entries, financial amounts) using AES-256 encryption. Store everything on your device. Let you export data anytime via PDF or JSON.");
+            addSectionTitle("Pref AI & Privacy");
+            addParagraph("When you use Pref AI, your prompts and uploaded PDFs are sent to Google's Gemini API for processing. This is the ONLY feature that transmits data externally. Important: 1) Google processes requests but doesn't store them for training (per their Enterprise API terms). 2) Your messages are sent over HTTPS (encrypted in transit). 3) If privacy is critical, avoid uploading sensitive PDFs (e.g., medical records, financial contracts). For local-only usage, simply don't use the AI feature.");
+            addSectionTitle("Manual Backup & Export");
+            addParagraph("To backup your data: 1) Go to Settings. 2) Tap 'Export Data'. 3) Choose format (PDF Codex or JSON). PDF generates a human-readable document of your stats. JSON creates a machine-readable file you can import on another device or archive. Pro tip: Schedule monthly backups to Google Drive or external storage.");
+            addSectionTitle("Account Deletion");
+            addParagraph("Since Prefrontal has no central server or user accounts, there's nothing to 'delete' remotely. To erase all data: 1) Go to Settings > Advanced. 2) Tap 'Clear All Data'. 3) Confirm. This wipes the local database. Alternatively, uninstall the app—this also removes all local data permanently.");
+
+            doc.save("Prefrontal_Codex_Manual.pdf");
+        });
+
+        // ========== HAMBURGER MENU TOGGLE ==========
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-menu-link, .mobile-menu-download');
+
+        // Toggle menu when hamburger clicked
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        // Close menu when any link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close menu when clicking outside
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+
+</html>
