@@ -499,7 +499,8 @@ const Habits = () => {
                             gap: '8px',
                             marginBottom: '12px',
                             borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-                            paddingBottom: '8px'
+                            paddingBottom: '8px',
+                            justifyContent: 'start' // Align entire grid to start
                         }}>
                             <div style={{
                                 display: 'flex',
@@ -538,7 +539,8 @@ const Habits = () => {
                                     gap: '8px',
                                     alignItems: 'center',
                                     padding: '12px 0', // Increased vertical padding slightly
-                                    borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
+                                    borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                                    justifyContent: 'start' // Align entire grid to start
                                 }}>
                                     <div style={{
                                         display: 'flex',
@@ -751,18 +753,20 @@ const Habits = () => {
                     bottom: 0,
                     background: 'rgba(0, 0, 0, 0.8)',
                     display: 'flex',
-                    alignItems: 'flex-end',
+                    alignItems: 'center', // Changed from flex-end to center
                     justifyContent: 'center',
-                    zIndex: 1000
+                    zIndex: 1000,
+                    padding: '20px' // Added padding for touch targets
                 }}>
                     <div style={{
                         background: 'linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%)',
-                        borderRadius: '24px 24px 0 0',
+                        borderRadius: '24px', // Full rounded corners
                         padding: '24px',
-                        width: '100%',
+                        width: '90%', // Use 90% width on responsive
                         maxWidth: '430px',
-                        maxHeight: '80vh',
-                        overflow: 'auto'
+                        maxHeight: '90vh',
+                        overflowY: 'auto',
+                        boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
                     }}>
                         <div style={{
                             display: 'flex',

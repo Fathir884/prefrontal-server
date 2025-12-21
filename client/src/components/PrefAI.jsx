@@ -410,7 +410,7 @@ const PrefAI = () => {
     const [isTyping, setIsTyping] = useState(false);
     const [showSettings, setShowSettings] = useState(false);
     // Use provided key as default if not in local storage
-    const defaultKey = 'AIzaSyA6cELfuGM5YIcm94gtcgHehC4zXg9RfVo';
+    const defaultKey = 'AIzaSyB1ZpJJLLYRIYuhbtrfqvcnSUdtfUYD_yo';
     const [geminiKey, setGeminiKey] = useState(() => localStorage.getItem('gemini_api_key') || defaultKey);
     const messagesEndRef = useRef(null);
     const inputRef = useRef(null);
