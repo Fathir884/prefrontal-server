@@ -443,11 +443,25 @@ export const generateModulePDF = async () => {
     addSectionTitle("Leaderboard (Future Feature)");
     addParagraph("Future versions will include optional social leaderboards where you can compare stats (e.g., total Pomodoros, longest streak, arcade high scores) with friends. This adds healthy competition and accountability.");
 
-    // ========== CHAPTER 10: PRIVACY & DATA ==========
-    addChapterTitle("10", "Data Privacy & Security");
-    addParagraph("In an era of surveillance capitalism where apps harvest your data to sell to advertisers, Prefrontal takes a radically different stance: Your data is sacred. We adopt a 'Local-First' architecture where your information never leaves your device unless you explicitly choose to share it.");
-    addSectionTitle("Local-First Architecture");
-    addParagraph("All your data—financial transactions, mood logs, tasks, habits, journal entries—is stored locally in an SQLite database on your Android device. This means: 1) No cloud syncing by default (we don't have access to your data). 2) No internet required (the app works fully offline). 3) Instant performance (no server lag). 4) Complete ownership (you control backups and exports).");
+    // ========== CHAPTER 10: CLOUD SYNC & DATA SECURITY ==========
+    addChapterTitle("10", "Cloud Sync & security");
+    addParagraph("In an era of digital mobility, your data cannot be trapped in one device. Prefrontal adopts a 'Hybrid Cloud' architecture: Local-First for speed, Cloud-Second for security. This ensures you get the best of both worlds—instant offline performance and reliable online backups.");
+
+    addSectionTitle("Hybrid Architecture");
+    addParagraph("By default, Prefrontal operates locally. Your financial logs, mood entries, and tasks are stored instantly on your device's internal database (MongoDB Realm/SQLite). This guarantees zero latency and 100% offline functionality. However, local data is vulnerable to device loss. That's where our Cloud Engine comes in.");
+
+    addSectionTitle("Enterprise Cloud Engine");
+    addParagraph("We leverage industry-standard infrastructure: Vercel Serverless Functions for processing and MongoDB Atlas for storage. This isn't just a file upload; it's a granular database synchronization. When you tap 'Backup', your data is encrypted, serialized, and transmitted to our secure cloud cluster.");
+
+    addSectionTitle("Seamless Restoration (The Magic)");
+    addParagraph("Moving to a new phone? The days of manually copying files are over. Prefrontal offers a 'State Restoration' system:");
+    addBullet("1. Backup", "On your old device, go to Profile > Sync > Backup. Your data travels to the cloud.");
+    addBullet("2. Login", "On your new device, simply sign up/in with the SAME username.");
+    addBullet("3. Restore", "Go to Profile > Sync > Restore. The app fetches your latest state from the cloud and overwrites the local database.");
+    addParagraph("The result? You pick up exactly where you left off, with all your streaks, transaction history, and badges intact.");
+
+    addSectionTitle("Security & Privacy");
+    addParagraph("Even with Cloud functionality, privacy remains paramount. Your data is stored in isolated documents within MongoDB Atlas, protected by strict access rules. We do not sell, mine, or share your productivity data with third parties. You remain the sole owner of your cognitive footprint.");
     addSectionTitle("Data You Can Trust");
     addParagraph("We do NOT: Sell your data to third parties. Track your behavior for advertising. Require account creation or email. Use cloud analytics that harvest usage patterns. We DO: Encrypt sensitive fields (journal entries, financial amounts) using AES-256 encryption. Store everything on your device. Let you export data anytime via PDF or JSON.");
     addSectionTitle("Pref AI & Privacy");

@@ -70,10 +70,10 @@ const ModulePage = () => {
             content: "Productivity meets Dopamine. The Arcade Room features three cognitive training games: 'Memory Matrix' for working memory enhancement through pattern recognition, 'Color Connect' for spatial reasoning and problem-solving via path-finding puzzles, and 'Card Match' for short-term memory speed training through number pair matching. The 'Trophy Room' rewards you with permanent badges (e.g., 'Pomodoro Master') for completing focused study sessions or maintaining streaks."
         },
         {
-            title: "Profile & Data Privacy",
+            title: "Cloud Sync & security",
             icon: User,
             color: "#ffffff",
-            content: "Your data, your control. This section lets you manage your personal bio and profile photo. Importantly, Prefrontal follows a 'Local First' architecture—your financial and journal data is encrypted and stored on-device. You can also generate detailed PDF reports of your weekly progress."
+            content: "Seamless device migration. Prefrontal uses a 'Hybrid Cloud' system: The app runs offline-first for maximum speed, but allows you to Backup & Restore your entire state via our secure Enterprise Cloud. Simply 'Backup' on your old device and 'Restore' on the new one to transfer streaks, badges, and financial logs instantly."
         }
     ];
 
