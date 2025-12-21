@@ -681,6 +681,8 @@ li {
 
 .input-name {
     width: 100%;
+    box-sizing: border-box;
+    /* Ensures padding stays INSIDE style width */
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
@@ -700,6 +702,8 @@ li {
 
 .input-comment {
     width: 100%;
+    box-sizing: border-box;
+    /* Ensures padding stays INSIDE style width */
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
