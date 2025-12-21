@@ -246,7 +246,7 @@ const CalendarPage = () => {
 
         // Empty cells for days before month starts
         for (let i = 0; i < firstDay; i++) {
-            days.push(<div key={`empty-${i}`} style={{ padding: '8px' }}></div>);
+            days.push(<div key={`empty-${i}`} style={{ padding: '2px' }}></div>);
         }
 
         // Days of the month
@@ -263,14 +263,15 @@ const CalendarPage = () => {
                     key={day}
                     onClick={() => setSelectedDate(dateStr)}
                     style={{
-                        padding: '8px',
-                        minHeight: '70px',
+                        padding: '2px', // Reduced padding for mobile
+                        minHeight: '60px', // Slightly compacted
                         border: isSelected ? '2px solid var(--primary)' : '1px solid #333',
                         borderRadius: '4px',
                         backgroundColor: isSelected ? 'rgba(var(--primary-rgb), 0.1)' : (isToday ? 'rgba(255, 215, 0, 0.1)' : '#1a1a1a'),
                         position: 'relative',
                         cursor: 'pointer',
-                        transition: 'all 0.2s'
+                        transition: 'all 0.2s',
+                        overflow: 'hidden' // Ensure content doesn't spill
                     }}
                 >
                     <div style={{

@@ -484,12 +484,13 @@ const Habits = () => {
 
             {/* Week Tab */}
             {activeTab === 'week' && (
-                <div>
+                <div style={{ overflowX: 'auto', paddingBottom: '10px' }}>
                     <div style={{
                         background: 'rgba(255, 255, 255, 0.03)',
                         borderRadius: '16px',
                         padding: '16px',
-                        marginBottom: '16px'
+                        marginBottom: '16px',
+                        minWidth: '500px' // Force horizontal scroll on small screens
                     }}>
                         {/* Days Header */}
                         <div style={{
@@ -709,7 +710,7 @@ const Habits = () => {
                 onClick={() => setShowAddModal(true)}
                 style={{
                     position: 'fixed',
-                    bottom: '100px',
+                    bottom: '160px', // Raised from 100px to avoid overlap
                     right: '20px',
                     width: '56px',
                     height: '56px',
