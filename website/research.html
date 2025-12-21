@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefrontal: Scientific Research & Codex</title>
+
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="Prefrontal: Scientific Research">
+    <meta name="description"
+        content="Read the scientific basis behind the Prefrontal architecture. Integrated Ecosystem Approach for Cognitive Productivity.">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+            --glass-bg: rgba(15, 23, 42, 0.6);
+            --neon-blue: #06b6d4;
+            --neon-purple: #8b5cf6;
+        }
+
+        body {
+            background-color: #020617;
+            /* Darker than slate-900 */
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.08) 0%, transparent 25%);
+        }
+
+        /* Animated Background Blobs */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: #4c1d95;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: 20%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: #0e7490;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+
+        /* Hero Typography */
+        .hero-section {
+            margin-top: 120px;
+            text-align: center;
+            padding: 60px 0 100px;
+            position: relative;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .super-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glass Cards */
+        .journal-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+            align-items: start;
+        }
+
+        .pdf-visual {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border-radius: 20px;
+            padding: 30px;
+            border: var(--glass-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 100px;
+            transition: transform 0.3s ease;
+        }
+
+        .pdf-visual:hover {
+            transform: translateY(-5px);
+        }
+
+        .pdf-page {
+            background: #fff;
+            height: 320px;
+            width: 100%;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mock Text Lines */
+        .line {
+            height: 8px;
+            background: #e2e8f0;
+            margin-bottom: 12px;
+            border-radius: 4px;
+        }
+
+        .journal-content {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 32px 0;
+            padding: 24px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .abstract-quote {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #94a3b8;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 3px solid var(--neon-purple);
+            margin-bottom: 32px;
+        }
+
+        /* Buttons */
+        .btn-glow {
+            width: 100%;
+            background: linear-gradient(135deg, var(--neon-purple), #7c3aed);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+        }
+
+        /* Framework Cards */
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .framework-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 32px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .framework-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-5px);
+        }
+
+        /* Bibtex Box */
+        .bibtex-box {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #64748b;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .journal-container {
+                grid-template-columns: 1fr;
+            }
+
+            .super-title {
+                font-size: 2.5rem;
+            }
+
+            .pdf-visual {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Animation -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav class="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <i data-lucide="brain-circuit" class="logo-icon"></i>
+                <span>Prefrontal.</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#" style="color: #fff; border-bottom: 2px solid var(--accent);">Science</a>
+            </div>
+            <div class="nav-actions">
+                <a href="index.html" class="btn-primary"
+                    style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                    <i data-lucide="arrow-left" size="18"></i> Back to App
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <section class="hero-section">
+            <div class="badge-wrapper" style="justify-content: center; margin-bottom: 30px;">
+                <span class="badge"
+                    style="background: rgba(6, 182, 212, 0.1); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.2);">
+                    <i data-lucide="microscope" size="14" style="margin-right: 6px; vertical-align: middle;"></i>
+                    Research Division
+                </span>
+            </div>
+            <h1 class="super-title">The Science of Flow</h1>
+            <p style="font-size: 1.25rem; color: #94a3b8; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                Deconstructing the integrated ecosystem approach to cognitive enhancement and productivity.
+            </p>
+        </section>
+
+        <section class="journal-container">
+            <!-- Left Column: Visual -->
+            <div class="pdf-visual">
+                <div class="pdf-page">
+                    <div
+                        style="height: 120px; background: linear-gradient(135deg, #f8fafc, #e2e8f0); padding: 20px; display: flex; align-items: center; justify-content: center;">
+                        <i data-lucide="file-check" size="48" style="color: #94a3b8; opacity: 0.5;"></i>
+                    </div>
+                    <div style="padding: 20px;">
+                        <div class="line" style="width: 80%;"></div>
+                        <div class="line" style="width: 60%;"></div>
+                        <div class="line" style="width: 90%;"></div>
+                        <div class="line" style="width: 70%;"></div>
+                        <div class="line" style="width: 40%; background: var(--neon-purple); opacity: 0.3;"></div>
+                    </div>
+                    <div
+                        style="position: absolute; bottom: 0; width: 100%; height: 60px; background: linear-gradient(to top, #fff, transparent);">
+                    </div>
+                </div>
+                <!-- Badge Overlay -->
+                <div
+                    style="position: absolute; bottom: 50px; right: 20px; background: #10b981; color: white; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 6px; box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);">
+                    <i data-lucide="check-circle-2" size="14"></i> PEER REVIEWED
+                </div>
+            </div>
+
+            <!-- Right Column: Details -->
+            <div class="journal-content">
+                <h2 style="font-size: 2rem; margin-top: 0; margin-bottom: 16px; color: #fff;">Prefrontal: Pendekatan
+                    Ekosistem Terpadu</h2>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;">
+                    <span
+                        style="padding: 4px 12px; border-radius: 20px; background: rgba(255,255,255,0.05); color: #94a3b8; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.1);">HCI</span>
+                    <span
+                        style="padding: 4px 12px; border-radius: 20px; background: rgba(255,255,255,0.05); color: #94a3b8; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.1);">Neuroscience</span>
+                    <span
+                        style="padding: 4px 12px; border-radius: 20px; background: rgba(255,255,255,0.05); color: #94a3b8; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.1);">Productivity</span>
+                </div>
+
+                <div class="abstract-quote">
+                    <i data-lucide="quote" size="20" style="color: var(--neon-purple); margin-bottom: 12px;"></i><br>
+                    "By resolving the fragmentation of traditional tools... we demonstrate how an integrated ecosystem
+                    can significantly reduce cognitive load and improve Flow State retention."
+                </div>
+
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <span class="meta-label">Pages</span>
+                        <span class="meta-value">12</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Size</span>
+                        <span class="meta-value">1.6 MB</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Language</span>
+                        <span class="meta-value">ID/EN</span>
+                    </div>
+                </div>
+
+                <a href="Prefrontal_ Pendekatan Ekosistem Terpadu - Jurnal Artikel.pdf" download class="btn-glow">
+                    <i data-lucide="download" size="24"></i>
+                    Download Full PDF
+                </a>
+
+                <div class="bibtex-box">
+                    @article{ramadhan2025prefrontal,<br>
+                    &nbsp;&nbsp;title={Prefrontal: Pendekatan Ekosistem Terpadu},<br>
+                    &nbsp;&nbsp;author={Ramadhan, Fathir},<br>
+                    &nbsp;&nbsp;journal={Digital Humanities & SDGs},<br>
+                    &nbsp;&nbsp;year={2025},<br>
+                    &nbsp;&nbsp;publisher={KBM Indonesia}<br>
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- Frameworks Grid -->
+        <h3 style="font-size: 1.5rem; text-align: center; margin-bottom: 40px; color: #fff;">Core Principles
+        </h3>
+        <div class="framework-grid">
+            <div class="framework-card">
+                <i data-lucide="layers" size="32" style="color: var(--neon-purple); margin-bottom: 20px;"></i>
+                <h4 style="color: #fff; margin: 0 0 10px 0; font-size: 1.25rem;">Cognitive Ecosystem</h4>
+                <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">
+                    Treating financial, mental, and task variables as interconnected nodes rather than isolated silos.
+                </p>
+            </div>
+            <div class="framework-card">
+                <i data-lucide="cpu" size="32" style="color: var(--neon-blue); margin-bottom: 20px;"></i>
+                <h4 style="color: #fff; margin: 0 0 10px 0; font-size: 1.25rem;">Digital Prosthesis</h4>
+                <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">
+                    Offloading executive functions to the interface to free up biological working memory for creative
+                    tasks.
+                </p>
+            </div>
+            <div class="framework-card">
+                <i data-lucide="zap" size="32" style="color: #f59e0b; margin-bottom: 20px;"></i>
+                <h4 style="color: #fff; margin: 0 0 10px 0; font-size: 1.25rem;">Friction Reduction</h4>
+                <p style="color: #94a3b8; font-size: 0.95rem; margin: 0;">
+                    Minimizing the metabolic cost of context switching through a unified, fluid user interface.
+                </p>
+            </div>
+        </div>
+
+        <div style="height: 100px;"></div>
+
+    </main>
+
+    <footer>
+        <div class="container footer-content"
+            style="text-align: center; padding-bottom: 40px; color: #64748b; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px;">
+            <p>Copyright &copy; 2025 Fathir Ramadhan. Research Division.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

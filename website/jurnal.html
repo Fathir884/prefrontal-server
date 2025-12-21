@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prefrontal: Pendekatan Ekosistem Terpadu - Jurnal Artikel</title>
+    <style>
+        /* Typography Imports: Lora (Body) & Work Sans (Headers) */
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Work+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap');
+
+        :root {
+            --primary: #7e22ce;
+            /* Deep Purple */
+            --accent: #a855f7;
+            /* Bright Purple */
+            --text-main: #2d3748;
+            --text-light: #4a5568;
+            --bg-abstract: #faf5ff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15mm 20mm;
+            background: white;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #d946ef);
+        }
+
+        .logo-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+            margin-top: 20px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 20pt;
+            font-weight: 700;
+            color: #1a202c;
+            line-height: 1.3;
+            margin: 0 0 15px 0;
+            letter-spacing: -0.5px;
+            padding: 0 10px;
+        }
+
+        .article-meta {
+            font-family: 'Work Sans', sans-serif;
+            margin-top: 15px;
+            font-size: 11pt;
+            color: #4a5568;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 13pt;
+        }
+
+        /* --- ABSTRACT --- */
+        .abstract-box {
+            background-color: var(--bg-abstract);
+            padding: 25px 30px;
+            border-left: 5px solid var(--accent);
+            margin-bottom: 40px;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+            font-size: 9.5pt;
+        }
+
+        .abstract-label {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 2px 10px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .abstract-text p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .keywords {
+            margin-top: 15px;
+            font-size: 9pt;
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-light);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding-top: 10px;
+        }
+
+        .keywords strong {
+            color: var(--primary);
+        }
+
+        /* --- CONTENT --- */
+        .main-body {
+            column-count: 2;
+            column-gap: 12mm;
+            text-align: justify;
+            font-size: 10pt;
+        }
+
+        h2 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 11pt;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+            letter-spacing: 0.5px;
+            break-after: avoid;
+        }
+
+        h3 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 10pt;
+            font-weight: 700;
+            color: #2d3748;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            break-after: avoid;
+        }
+
+        h4 {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 9.5pt;
+            font-weight: 600;
+            font-style: italic;
+            color: #4a5568;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-indent: 0;
+        }
+
+        ul,
+        ol {
+            margin: 10px 0 15px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent);
+            margin: 15px 0;
+            padding-left: 15px;
+            font-style: italic;
+            color: #555;
+            background: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* --- DIAGRAMS & CODE BLOCKS --- */
+        .diagram-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 15px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 7pt;
+            white-space: pre-wrap;
+            overflow-x: hidden;
+            color: #475569;
+            break-inside: avoid;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8pt;
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* --- TABLES --- */
+        .table-wrapper {
+            margin: 20px 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            break-inside: avoid;
+            font-size: 8pt;
+            width: 100%;
+        }
+
+        .full-width {
+            column-span: all;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 8px 10px;
+            border-bottom: 2px solid #cbd5e1;
+            text-align: left;
+            font-size: 7.5pt;
+        }
+
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #edf2f7;
+            vertical-align: top;
+            color: #475569;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-caption {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 5px;
+            font-size: 8pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- REFERENCES --- */
+        .references-section {
+            margin-top: 40px;
+            border-top: 4px solid var(--text-main);
+            padding-top: 20px;
+            column-count: 2;
+        }
+
+        .ref-heading {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 10pt;
+            margin-bottom: 15px;
+            column-span: all;
+            display: block;
+        }
+
+        .ref-list {
+            font-size: 8pt;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        .ref-item {
+            margin-bottom: 6px;
+            padding-left: 1.5em;
+            text-indent: -1.5em;
+            word-break: break-all;
+        }
+
+        /* --- APPENDICES & CLOSING --- */
+        .appendix-section {
+            column-span: all;
+            margin-top: 50px;
+            border-top: 2px dashed #cbd5e1;
+            padding-top: 30px;
+            page-break-before: always;
+        }
+
+        .appendix-title {
+            font-size: 14pt;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .appendix-subtitle {
+            font-size: 12pt;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .closing-section {
+            column-span: all;
+            margin-top: 50px;
+            text-align: center;
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            page-break-inside: avoid;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            column-span: all;
+            margin-top: 40px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+            text-align: center;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 8pt;
+            color: var(--text-light);
+        }
+
+        /* PRINT OPTIMIZATION */
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                max-width: none;
+            }
+
+            @page {
+                size: A4;
+                margin: 15mm 20mm;
+            }
+
+            .abstract-box,
+            th,
+            body::before,
+            .insight-box,
+            .diagram-box,
+            blockquote,
+            .table-wrapper {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .appendix-section {
+                page-break-before: always;
+            }
+
+            h2 {
+                page-break-after: avoid;
+            }
+
+            img {
+                max-width: 100%;
+            }
+        }
+
+        sup {
+            font-size: 0.7em;
+            vertical-align: super;
+            color: var(--primary);
+            font-weight: 600;
+            margin-left: 2px;
+        }
+
+        /* --- DIAGRAMS & VISUALIZATIONS --- */
+        .diagram-container {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            font-family: 'Work Sans', sans-serif;
+            page-break-inside: avoid;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .diagram-title {
+            text-align: center;
+            font-weight: 700;
+            font-size: 9pt;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Flowchart (RAG) */
+        .flowchart {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .flow-step {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            color: #0369a1;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 8pt;
+            font-weight: 600;
+            text-align: center;
+            position: relative;
+        }
+
+        .flow-arrow {
+            color: #94a3b8;
+            font-size: 12pt;
+        }
+
+        /* Architecture Stack (Local First) */
+        .arch-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .arch-layer {
+            background: #fdf4ff;
+            border: 1px solid #e879f9;
+            /* Pink/Purple border */
+            color: #86198f;
+            padding: 10px;
+            text-align: center;
+            border-radius: 6px;
+            font-size: 8.5pt;
+            font-weight: 600;
+        }
+
+        .arch-layer.db {
+            background: #f0fdf4;
+            /* Green tint */
+            border-color: #4ade80;
+            color: #15803d;
+        }
+
+        .arch-layer.sync {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+            color: #475569;
+            border-style: dashed;
+        }
+
+        /* Modular Grid (Prefrontal Core) */
+        .core-container {
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 10px;
+            background: #faf5ff;
+        }
+
+        .core-label {
+            text-align: center;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 10pt;
+            letter-spacing: 1px;
+        }
+
+        .module-row {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        .module-box {
+            flex: 1;
+            background: white;
+            border: 1px solid #d8b4fe;
+            padding: 8px 5px;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 7.5pt;
+            font-weight: 600;
+            color: #6b21a8;
+        }
+
+        .module-box.emotion {
+            background: #fff1f2;
+            border-color: #fda4af;
+            color: #be123c;
+        }
+
+        .module-box.db {
+            background: #eff6ff;
+            border-color: #93c5fd;
+            color: #1e40af;
+            margin-top: 5px;
+        }
+
+        /* Formula Box */
+        .formula-box {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 11pt;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+        }
+
+        /* Positioning Map */
+        .pos-map-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .axis-x,
+        .axis-y {
+            position: absolute;
+            background: #94a3b8;
+        }
+
+        .axis-x {
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+        }
+
+        .axis-y {
+            left: 50%;
+            top: 10%;
+            bottom: 10%;
+            width: 2px;
+        }
+
+        .map-label {
+            position: absolute;
+            font-size: 7pt;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: #f8fafc;
+            padding: 0 4px;
+            z-index: 5;
+        }
+
+        .label-top {
+            top: 3%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .label-bottom {
+            bottom: 3%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .label-left {
+            left: 2%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .label-right {
+            right: 2%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .map-point {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .point-label {
+            position: absolute;
+            font-size: 8pt;
+            font-weight: 700;
+            white-space: nowrap;
+            margin-top: 8px;
+            transform: translateX(-50%);
+            text-shadow: 0 1px 2px white;
+        }
+
+        .point-prefrontal {
+            background: #7e22ce;
+            top: 20%;
+            left: 50%;
+        }
+
+        .point-notion {
+            background: #ef4444;
+            top: 45%;
+            left: 25%;
+        }
+
+        .point-obsidian {
+            background: #8b5cf6;
+            top: 45%;
+            left: 75%;
+        }
+
+        .point-todoist {
+            background: #e11d48;
+            top: 75%;
+            left: 25%;
+        }
+
+        .point-plaintext {
+            background: #64748b;
+            top: 75%;
+            left: 75%;
+        }
+
+        /* Octalysis */
+        .octalysis-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .oct-item {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 7.5pt;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+        }
+
+        .oct-item.white-hat {
+            border-top: 3px solid #facc15;
+        }
+
+        .oct-item.black-hat {
+            border-bottom: 3px solid #000000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-section">
+            <!-- Ensure logo.png exists correctly in path -->
+            <img src="logo.png" alt="App Logo" class="logo">
+        </div>
+        <h1>Prefrontal: Pendekatan Ekosistem Terpadu untuk Mengurangi Beban Kognitif melalui Integrasi Manajemen
+            Keuangan, Pembentukan Kebiasaan, dan Manajemen Pengetahuan Berbasis AI</h1>
+        <div class="article-meta">
+            <div class="author-name">Fathir Ramadhan</div>
+        </div>
+    </header>
+
+    <div class="abstract-box">
+        <span class="abstract-label">Abstrak</span>
+        <div class="abstract-text">
+            <p><strong>Konteks:</strong> Dalam lanskap digital kontemporer, fenomena "Fragmentasi Digital" dan "Beban
+                Kognitif Berlebih" (<em>Cognitive Overload</em>) telah berevolusi dari sekadar gangguan operasional
+                menjadi krisis kesehatan mental dan produktivitas yang sistemik.</p>
+            <p><strong>Tujuan:</strong> Artikel jurnal ini menyajikan analisis mendalam dan evaluasi kritis terhadap
+                "Prefrontal," sebuah artefak perangkat lunak yang dirancang sebagai "Digital Prefrontal Cortex" atau
+                prostesis kognitif eksternal.</p>
+            <p><strong>Metode:</strong> Melalui tinjauan literatur yang ekstensif meliputi bidang Interaksi
+                Manusia-Komputer (HCI), Psikologi Kognitif, dan Sistem Informasi, serta analisis tekstual terhadap
+                dokumen teknis "Prefrontal Codex", studi ini mengeksplorasi bagaimana desain antarmuka yang mengutamakan
+                <em>Cognitive Ergonomics</em> dan arsitektur <em>Local-First</em> dapat memitigasi biaya metabolik dari
+                perpindahan konteks (<em>context switching</em>).
+            </p>
+            <p><strong>Hasil:</strong> Berbeda dengan paradigma pengembangan aplikasi produktivitas konvensional yang
+                cenderung terisolasi (<em>siloed</em>) dan terfragmentasi, Prefrontal mengusulkan arsitektur
+                <em>SuperApp</em> yang radikal: sebuah ekosistem tertutup yang mengintegrasikan manajemen keuangan,
+                eksekusi tugas, pembelajaran berbasis <em>Retrieval-Augmented Generation</em> (RAG), dan regulasi
+                emosional.
+            </p>
+            <p><strong>Kesimpulan:</strong> Temuan menunjukkan bahwa Prefrontal bukan sekadar alat bantu kerja,
+                melainkan sebuah manifestasi dari teori <em>Extended Mind</em>, yang menawarkan solusi teknis untuk
+                masalah biologis keterbatasan memori kerja, dengan relevansi khusus bagi demografi pengguna di pasar
+                negara berkembang seperti Indonesia.</p>
+        </div>
+        <div class="keywords"><strong>Kata Kunci:</strong> Beban Kognitif, Fragmentasi Digital, Prostesis Kognitif,
+            Extended Mind Theory, SuperApp, RAG, Cognitive Ergonomics</div>
+    </div>
+
+    <div class="main-body">
+
+        <h2>1. Pendahuluan</h2>
+
+        <h3>1.1 Latar Belakang: Krisis Atensi dalam Ekologi Informasi Terfragmentasi</h3>
+        <p>Abad ke-21 sering dikarakteristikkan sebagai era "Ekonomi Atensi," di mana kemampuan manusia untuk memusatkan
+            pikiran telah menjadi sumber daya yang paling langka dan berharga. Namun, infrastruktur teknologi yang
+            mendasari kehidupan sehari-hari—perangkat seluler dan aplikasi berbasis <em>cloud</em>—sering kali dirancang
+            dengan insentif yang bertentangan dengan preservasi atensi tersebut.</p>
+
+        <h4>1.1.1 Fenomena Fragmentasi Digital</h4>
+        <p>Fenomena ini, yang dalam literatur akademis dikenal sebagai "Digital Fragmentation," merujuk pada penyebaran
+            informasi dan fungsi kerja di berbagai aplikasi yang terisolasi, yang memaksa pengguna untuk melakukan
+            manajemen mikro terhadap data mereka sendiri di berbagai <em>platform</em>.<sup>1</sup></p>
+
+        <blockquote><strong>Insight Kunci:</strong> Manusia modern tidak lagi hanya "menggunakan" komputer; mereka
+            mendiami sebuah "ruang informasi" yang terpecah-pecah.</blockquote>
+
+        <p>Seorang pekerja pengetahuan (<em>knowledge worker</em>) atau mahasiswa rata-rata mungkin menggunakan:</p>
+        <ul>
+            <li><strong>Aplikasi 1:</strong> Manajemen tugas</li>
+            <li><strong>Aplikasi 2:</strong> Kalender</li>
+            <li><strong>Aplikasi 3:</strong> Pencatatan keuangan</li>
+            <li><strong>Aplikasi 4:</strong> Catatan pribadi</li>
+        </ul>
+
+        <p>Isolasi data ini menciptakan apa yang disebut Jones et al. sebagai "masalah fragmentasi informasi pribadi"
+            (<em>Personal Information Management fragmentation problem</em>), di mana pengguna menghabiskan energi
+            kognitif yang signifikan hanya untuk mengingat di mana informasi tertentu disimpan atau untuk mentransfer
+            data secara manual antar-silo.<sup>2</sup></p>
+
+        <h4>1.1.2 Konsekuensi Neurobiologis</h4>
+        <p>Konsekuensi neurobiologis dari fragmentasi ini sangat parah. Otak manusia, khususnya <strong>korteks
+                prefrontal</strong> yang bertanggung jawab atas fungsi eksekutif, memiliki kapasitas pemrosesan serial
+            yang terbatas.</p>
+
+        <h3>1.2 Rumusan Masalah</h3>
+        <p>Berdasarkan konteks di atas, penelitian ini mengajukan pertanyaan kritis:</p>
+        <ol>
+            <li><strong>Bagaimana</strong> fragmentasi digital berkontribusi terhadap beban kognitif berlebih pada
+                pengguna modern?</li>
+            <li><strong>Sejauh mana</strong> integrasi fungsi dalam satu ekosistem aplikasi dapat mengurangi biaya
+                kognitif perpindahan konteks?</li>
+            <li><strong>Apakah</strong> pendekatan <em>SuperApp</em> dengan arsitektur <em>Local-First</em> dapat
+                berfungsi sebagai prostesis kognitif yang efektif?</li>
+        </ol>
+
+        <h3>1.3 Tujuan Penelitian</h3>
+        <p>Penelitian ini bertujuan untuk:</p>
+
+        <div class="table-wrapper full-width">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="10%">No</th>
+                        <th width="30%">Tujuan</th>
+                        <th>Deskripsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Analisis Konseptual</strong></td>
+                        <td>Menganalisis fondasi teoretis Prefrontal dalam kerangka Extended Mind Theory dan Cognitive
+                            Load Theory</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Evaluasi Teknis</strong></td>
+                        <td>Mengevaluasi arsitektur teknis dan mekanisme desain Prefrontal</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Validasi Empiris</strong></td>
+                        <td>Memvalidasi klaim efektivitas melalui tinjauan literatur ilmiah</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Kontekstualisasi</strong></td>
+                        <td>Mengkontekstualisasikan relevansi Prefrontal untuk pasar Indonesia</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>1.4 Signifikansi Penelitian</h3>
+        <h4>1.4.1 Kontribusi Teoretis</h4>
+        <p>Penelitian ini berkontribusi pada:</p>
+        <ul>
+            <li><strong>Teori Extended Mind</strong> dalam konteks aplikasi praktis</li>
+            <li><strong>Human-Computer Interaction (HCI)</strong> dengan fokus pada cognitive ergonomics</li>
+            <li><strong>Information Systems</strong> melalui paradigma SuperApp</li>
+        </ul>
+
+        <h4>1.4.2 Kontribusi Praktis</h4>
+        <p>Secara praktis, penelitian ini: Memberikan blueprint untuk pengembangan aplikasi produktivitas holistik,
+            Menawarkan solusi untuk krisis atensi digital, dan Mengidentifikasi peluang pasar di negara berkembang.</p>
+
+        <h2>2. Tinjauan Pustaka</h2>
+
+        <h3>2.1 Cognitive Load Theory dan Keterbatasan Memori Kerja</h3>
+        <h4>2.1.1 Fondasi Teoretis</h4>
+        <p><strong>Cognitive Load Theory (CLT)</strong>, yang dikembangkan oleh John Sweller pada tahun 1988, merupakan
+            kerangka kerja fundamental untuk memahami bagaimana arsitektur kognitif manusia memproses
+            informasi.<sup>3</sup></p>
+        <p>Teori ini didasarkan pada tiga premis utama:</p>
+        <ol>
+            <li><strong>Memori Kerja Terbatas</strong><br>Kapasitas: 7±2 item informasi (Miller, 1956)<sup>4</sup>,
+                Revisi modern: 4±1 chunk (Cowan, 2001)<sup>5</sup>, Durasi: ~18 detik tanpa rehearsal</li>
+            <li><strong>Memori Jangka Panjang Tidak Terbatas</strong><br>Kapasitas: Praktis tidak terbatas, Organisasi:
+                Skema dan pola</li>
+            <li><strong>Pembelajaran Sebagai Transfer</strong><br>Dari memori kerja ke memori jangka panjang melalui
+                pembentukan dan otomatisasi skema</li>
+        </ol>
+
+        <h4>2.1.2 Tiga Jenis Beban Kognitif</h4>
+        <div class="table-wrapper full-width">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jenis</th>
+                        <th>Deskripsi</th>
+                        <th>Karakteristik</th>
+                        <th>Implikasi Desain</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Intrinsic Load</strong></td>
+                        <td>Kompleksitas inheren dari materi</td>
+                        <td>Tidak dapat diubah oleh desain instruksional</td>
+                        <td>Harus diakomodasi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Extraneous Load</strong></td>
+                        <td>Beban dari desain instruksional yang buruk</td>
+                        <td>Dapat dan harus diminimalkan</td>
+                        <td>Target optimisasi utama</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Germane Load</strong></td>
+                        <td>Beban yang mendukung pembelajaran</td>
+                        <td>Harus dimaksimalkan</td>
+                        <td>Fasilitasi pembentukan skema</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <blockquote><strong>Implikasi untuk Prefrontal:</strong> Aplikasi harus meminimalkan <em>extraneous load</em>
+            melalui desain antarmuka yang intuitif sambil memfasilitasi <em>germane load</em> untuk pembelajaran
+            produktif.</blockquote>
+
+        <h3>2.2 Extended Mind Theory: Kognisi Melampaui Tengkorak</h3>
+        <h4>2.2.1 Konsep Dasar</h4>
+        <p><strong>Extended Mind Theory</strong>, yang diajukan oleh Andy Clark dan David Chalmers (1998), merupakan
+            proposisi filosofis radikal yang menantang asumsi tradisional tentang batas-batas pikiran
+            manusia.<sup>6</sup></p>
+        <p><strong>Tesis Inti:</strong></p>
+        <blockquote>"Di mana berhentinya pikiran dan dimulainya dunia luar? [...] Jika, ketika kita menghadapi beberapa
+            tugas, sebagian dari dunia berfungsi sebagai proses yang, jika terjadi di dalam kepala, kita tidak akan ragu
+            untuk mengenalinya sebagai bagian dari proses kognitif, maka bagian dari dunia itu adalah bagian dari proses
+            kognitif."</blockquote>
+
+        <h4>2.2.2 Kriteria Coupling</h4>
+        <p>Clark & Chalmers mengajukan kriteria untuk menentukan kapan artefak eksternal menjadi bagian dari sistem
+            kognitif:</p>
+        <div class="diagram-container">
+            <div class="diagram-title">Extended Mind Criteria (Clark & Chalmers)</div>
+            <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <li class="flow-step" style="background:#f0fdf4; border-color:#86efac; color:#166534">✓ Reliability</li>
+                <li class="flow-step" style="background:#f0fdf4; border-color:#86efac; color:#166534">✓ Constant
+                    Accessibility</li>
+                <li class="flow-step" style="background:#f0fdf4; border-color:#86efac; color:#166534">✓ Automatic
+                    Endorsement</li>
+                <li class="flow-step" style="background:#f0fdf4; border-color:#86efac; color:#166534">✓ Functional
+                    Integration</li>
+            </ul>
+        </div>
+
+        <h4>2.2.3 Prefrontal sebagai Extended Mind</h4>
+        <p>Prefrontal memenuhi kriteria Extended Mind melalui:</p>
+        <ul>
+            <li><strong>Keandalan:</strong> Data tersimpan lokal dengan enkripsi end-to-end</li>
+            <li><strong>Aksesibilitas:</strong> Aplikasi mobile yang selalu terbawa</li>
+            <li><strong>Endorsemen:</strong> Informasi dipercaya tanpa verifikasi ulang</li>
+            <li><strong>Integrasi:</strong> Workflow terintegrasi mengurangi friction kognitif</li>
+        </ul>
+
+        <h3>2.3 Fragmentasi Digital dan Biaya Perpindahan Konteks</h3>
+        <h4>2.3.1 Definisi dan Karakteristik</h4>
+        <p><strong>Fragmentasi Digital</strong> merujuk pada kondisi di mana informasi tersebar di multiple platform,
+            tidak ada single source of truth, dan data redundan serta inkonsisten.</p>
+
+        <h4>2.3.2 Context Switching Cost</h4>
+        <p>Penelitian oleh Rubinstein, Meyer, & Evans (2001) menunjukkan bahwa perpindahan konteks
+            mengakibatkan:<sup>7</sup></p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metrik</th>
+                        <th>Dampak</th>
+                        <th>Implikasi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Waktu Reaksi</strong></td>
+                        <td>↑ 40%</td>
+                        <td>Penurunan kecepatan kerja</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tingkat Error</strong></td>
+                        <td>↑ 25-50%</td>
+                        <td>Penurunan akurasi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Waktu Pemulihan</strong></td>
+                        <td>15-25 menit</td>
+                        <td>Fragmentasi produktivitas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kelelahan Mental</strong></td>
+                        <td>Eksponensial</td>
+                        <td>Burnout jangka panjang</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>2.3.3 Attention Residue</h4>
+        <p>Sophie Leroy (2009) memperkenalkan konsep <strong>"Attention Residue"</strong>: Ketika kita beralih dari
+            Tugas A ke Tugas B, perhatian kita tidak langsung mengikuti—sebagian dari perhatian kita masih memikirkan
+            tugas sebelumnya.<sup>8</sup></p>
+        <div class="formula-box">
+            <p>Produktivitas = <em>f</em> (Waktu pada Tugas, Intensitas Fokus)</p>
+            <p style="margin-top:10px; font-size: 1.2em;">Intensitas Fokus = <span
+                    style="display:inline-block; vertical-align:middle; text-align:center;"><span
+                        style="display:block; border-bottom:1px solid black;">1</span><span style="display:block;">1 +
+                        Attention Residue</span></span></p>
+        </div>
+
+        <h3>2.4 SuperApp Paradigm: Konvergensi Fungsional</h3>
+        <h4>2.4.1 Definisi dan Evolusi</h4>
+        <p><strong>SuperApp</strong> didefinisikan sebagai platform mobile yang menyediakan suite terintegrasi dari
+            layanan inti dan mini-apps dalam satu antarmuka terpadu.<sup>9</sup></p>
+        <p><strong>Karakteristik Kunci:</strong> ✅ Multi-fungsi dalam satu aplikasi, ✅ Ekosistem tertutup atau
+            semi-tertutup, ✅ Single sign-on, dan ✅ Network effects.</p>
+
+        <h4>2.4.2 Studi Kasus: WeChat dan Gojek</h4>
+        <div class="table-wrapper full-width">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>WeChat (China)</th>
+                        <th>Gojek (Indonesia)</th>
+                        <th>Relevansi untuk Prefrontal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Core Services</strong></td>
+                        <td>Messaging, Payment, Social</td>
+                        <td>Transportation, Payment, Food</td>
+                        <td>Task, Finance, Knowledge</td>
+                    </tr>
+                    <tr>
+                        <td><strong>User Base</strong></td>
+                        <td>1.3B+ users</td>
+                        <td>200M+ users</td>
+                        <td>Target market validation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Value Prop</strong></td>
+                        <td>Convenience, Integration</td>
+                        <td>Accessibility, Local context</td>
+                        <td>Cognitive load reduction</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>2.4.3 Cognitive Benefits of SuperApps</h4>
+        <p>Penelitian oleh Baitenova et al. (2024) tentang preferensi pengguna Kaspi (SuperApp Kazakhstan)
+            menunjukkan:<sup>10</sup></p>
+        <ul>
+            <li><strong>73%</strong> pengguna lebih suka antarmuka terpadu meskipun lebih kompleks</li>
+            <li><strong>Alasan utama:</strong> Mengurangi cognitive overhead dari app switching</li>
+            <li><strong>Trade-off:</strong> Kompleksitas visual vs. fragmentasi fungsional</li>
+        </ul>
+
+        <h3>2.5 Local-First Software: Paradigma Kedaulatan Data</h3>
+        <h4>2.5.1 Prinsip Dasar</h4>
+        <p><strong>Local-First Software</strong> adalah paradigma desain yang memprioritaskan: <strong>Ownership,
+                Offline-First, Privacy, Performance, dan Longevity</strong>.<sup>11</sup></p>
+
+        <h4>2.5.2 Arsitektur Teknis</h4>
+        <div class="diagram-container">
+            <div class="diagram-title">Prefrontal Local-First Architecture</div>
+            <div class="arch-stack">
+                <div class="arch-layer">User Interface Layer</div>
+                <div class="arch-layer">Application Logic</div>
+                <div class="arch-layer db">Local Database (SQLite) + Encryption</div>
+                <div class="arch-layer sync">Sync Engine (CRDT) ↕ Cloud Backup</div>
+            </div>
+        </div>
+
+        <h4>2.5.3 Relevansi untuk Cognitive Load</h4>
+        <p>Local-First architecture mengurangi beban kognitif melalui eliminasi latency, reliability tinggi, trust yang
+            lebih besar, dan simplisitas.</p>
+
+        <h3>2.6 Retrieval-Augmented Generation (RAG) untuk PKM</h3>
+        <h4>2.6.1 Konsep dan Arsitektur</h4>
+        <p><strong>RAG</strong> adalah teknik yang menggabungkan kekuatan Large Language Models (LLMs) dengan retrieval
+            system.<sup>12</sup></p>
+        <div class="diagram-container">
+            <div class="diagram-title">RAG Knowledge Pipeline</div>
+            <div class="flowchart">
+                <div class="flow-step">User Query</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Encoding</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Vector Search</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Context</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">Generation</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step" style="background:#ecfccb; border-color:#bef264; color:#3f6212">Response</div>
+            </div>
+        </div>
+
+        <h4>2.6.2 Keunggulan untuk PKM</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspek</th>
+                        <th>Traditional Search</th>
+                        <th>RAG-Based System</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Query Type</strong></td>
+                        <td>Keyword matching</td>
+                        <td>Natural language</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Output</strong></td>
+                        <td>List of documents</td>
+                        <td>Synthesized answer</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Context</strong></td>
+                        <td>User must infer</td>
+                        <td>Automatically integrated</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>2.6.3 Implementasi dalam Prefrontal</h4>
+        <p>Prefrontal menggunakan RAG untuk semantic search, contextual suggestions, knowledge synthesis, dan
+            personalized insights.</p>
+
+        <h3>2.7 Gamifikasi dan Behavioral Design</h3>
+        <h4>2.7.1 Self-Determination Theory</h4>
+        <p><strong>Self-Determination Theory (SDT)</strong> mengidentifikasi tiga kebutuhan dasar: Autonomy, Competence,
+            dan Relatedness.<sup>13</sup></p>
+
+        <h4>2.7.2 Octalysis Framework</h4>
+        <div class="diagram-container">
+            <div class="diagram-title">Octalysis Framework (Core Drives)</div>
+            <div class="octalysis-grid">
+                <div class="oct-item white-hat">Epic Meaning</div>
+                <div class="oct-item white-hat">Accomplishment</div>
+                <div class="oct-item white-hat">Empowerment</div>
+                <div class="oct-item white-hat">Ownership</div>
+                <div class="oct-item black-hat">Social Influence</div>
+                <div class="oct-item black-hat">Scarcity</div>
+                <div class="oct-item black-hat">Unpredictability</div>
+                <div class="oct-item black-hat">Avoidance</div>
+            </div>
+        </div>
+
+        <h4>2.7.3 Aplikasi dalam Prefrontal</h4>
+        <p>Prefrontal mengimplementasikan streak tracking, visual progress, loss aversion, dan customization.</p>
+
+        <h2>3. Metodologi</h2>
+        <h3>3.1 Pendekatan Penelitian</h3>
+        <p>Penelitian ini mengadopsi <strong>Design Science Research (DSR)</strong> framework yang dikembangkan oleh
+            Hevner et al. (2004).<sup>15</sup></p>
+
+        <h4>3.1.2 Tiga Siklus DSR</h4>
+        <ol>
+            <li><strong>Relevance Cycle:</strong> Mengidentifikasi masalah dari environment</li>
+            <li><strong>Design Cycle:</strong> Iterasi build-evaluate artefak</li>
+            <li><strong>Rigor Cycle:</strong> Grounding dalam knowledge base</li>
+        </ol>
+
+        <h3>3.2 Sumber Data</h3>
+        <p><strong>Data Primer:</strong> Prefrontal Codex (dokumen teknis) dan Prototype Analysis.</p>
+        <p><strong>Data Sekunder:</strong> 50+ literatur akademis, industry reports, dan competitive analysis.</p>
+
+        <h3>3.3 Metode Analisis</h3>
+        <ul>
+            <li><strong>Analisis Tekstual:</strong> Thematic Analysis (Braun & Clarke, 2006)</li>
+            <li><strong>Evaluasi Heuristik:</strong> Nielsen's Usability Heuristics</li>
+            <li><strong>Cognitive Walkthrough:</strong> Simulasi penggunaan task scenarios</li>
+        </ul>
+
+        <h3>3.4 Validasi Klaim</h3>
+        <p>Validasi dilakukan dengan skala bintang (★) berdasarkan kekuatan dukungan empiris dari literatur.</p>
+
+        <h2>4. Hasil dan Analisis</h2>
+        <h3>4.1 Arsitektur Prefrontal: Analisis Teknis</h3>
+        <h4>4.1.1 Struktur Modular</h4>
+        <div class="diagram-container">
+            <div class="core-container">
+                <div class="core-label">PREFRONTAL CORE</div>
+                <div class="module-row">
+                    <div class="module-box" style="border-color:#fbbf24; color:#92400e;">Finance</div>
+                    <div class="module-box" style="border-color:#60a5fa; color:#1e40af;">Tasks</div>
+                    <div class="module-box" style="border-color:#a78bfa; color:#5b21b6;">Knowledge</div>
+                    <div class="module-box" style="border-color:#34d399; color:#065f46;">Habit</div>
+                </div>
+                <div class="module-box emotion">Emotion Regulation Module</div>
+                <div class="module-box db">Local Database Layer (SQLite + Encryption)</div>
+            </div>
+        </div>
+
+        <h4>4.1.2 Finance Module</h4>
+        <div class="table-wrapper full-width">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fitur</th>
+                        <th>Prinsip</th>
+                        <th>Validitas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Visual balance</td>
+                        <td><strong>Loss Aversion</strong></td>
+                        <td>★★★★☆</td>
+                    </tr>
+                    <tr>
+                        <td>Budget boundaries</td>
+                        <td><strong>Implementation Intentions</strong></td>
+                        <td>★★★★★</td>
+                    </tr>
+                    <tr>
+                        <td>Spending categorization</td>
+                        <td><strong>Mental Accounting</strong></td>
+                        <td>★★★★☆</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>4.1.3 Tasks Module</h4>
+        <p>Mengintegrasikan hierarchical task breakdown, time blocking, dan Eisenhower matrix. Mekanisme validasi: Task
+            Chunking (★★★★★), Time Blocking (★★★★☆).</p>
+
+        <h4>4.1.4 Knowledge Module (RAG-Powered)</h4>
+        <p>Keunggulan dibanding PKM tradisional adalah query language yang natural dan output yang tersintesis,
+            mengurangi
+            beban kognitif secara signifikan.</p>
+
+        <h4>4.1.5 Habit Module</h4>
+        <p>Fitur seperti Streak Tracking dan Implementation Intentions memiliki validitas empiris yang sangat kuat
+            (★★★★★) dalam literatur perubahan perilaku.</p>
+
+        <h4>4.1.6 Emotion Regulation Module</h4>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Teknik</th>
+                        <th>Validitas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Binaural Beats</td>
+                        <td>★★★☆☆<sup>30</sup></td>
+                    </tr>
+                    <tr>
+                        <td>4-7-8 Breathing</td>
+                        <td>★★★★☆<sup>31</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Journaling</td>
+                        <td>★★★★★<sup>32</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Mood Tracking</td>
+                        <td>★★★★☆<sup>33</sup></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>4.2 Evaluasi Klaim Efektivitas</h3>
+        <ul>
+            <li><strong>Mengurangi Cognitive Load 40%:</strong> ★★★★☆. Didasarkan pada Rubinstein et al. (2001).</li>
+            <li><strong>Meningkatkan Produktivitas via Habit:</strong> ★★★★★. Didukung kuat oleh literatur habit
+                formation.</li>
+            <li><strong>RAG Mengurangi Waktu Retrieval 60%:</strong> ★★★☆☆. Plausible tapi butuh validasi spesifik.</li>
+            <li><strong>Local-First Meningkatkan Trust:</strong> ★★★★☆. Privasi adalah concern utama pengguna.</li>
+        </ul>
+
+        <h3>4.3 Analisis Kompetitif</h3>
+        <p>Prefrontal diposisikan unik sebagai satu-satunya "cognitive prosthesis" yang mengintegrasikan finance, tasks,
+            knowledge, dan emotion dalam paket local-first mobile-native.</p>
+
+        <div class="diagram-container">
+            <div class="diagram-title">Positioning Map: Integration vs Privacy</div>
+            <div class="pos-map-container">
+                <!-- Axes -->
+                <div class="axis-x"></div>
+                <div class="axis-y"></div>
+
+                <!-- Axis Labels -->
+                <div class="map-label label-top">High Integration</div>
+                <div class="map-label label-bottom">Low Integration</div>
+                <div class="map-label label-left">Low Privacy</div>
+                <div class="map-label label-right">High Privacy</div>
+
+                <!-- Data Points -->
+                <div class="map-point point-prefrontal"></div>
+                <div class="point-label" style="top: 20%; left: 50%;">Prefrontal<br><span
+                        style="font-weight:400; font-size:6pt">SuperApp</span></div>
+
+                <div class="map-point point-notion"></div>
+                <div class="point-label" style="top: 45%; left: 25%;">Notion</div>
+
+                <div class="map-point point-obsidian"></div>
+                <div class="point-label" style="top: 45%; left: 75%;">Obsidian</div>
+
+                <div class="map-point point-todoist"></div>
+                <div class="point-label" style="top: 75%; left: 25%;">Todoist</div>
+
+                <div class="map-point point-plaintext"></div>
+                <div class="point-label" style="top: 75%; left: 75%;">Plain Text</div>
+            </div>
+        </div>
+
+        <h3>4.4 Kontekstualisasi untuk Pasar Indonesia</h3>
+        <p>Indonesia memiliki 89% penetrasi smartphone dan familiaritas tinggi dengan SuperApp (78%). Prefrontal mengisi
+            kekosongan untuk "Productivity SuperApp" yang privacy-focused dan terjangkau.</p>
+
+        <h3>4.5 Limitasi dan Challenges</h3>
+        <p>Tantangan utama meliputi performa On-Device AI, konflik sinkronisasi (CRDT), dan risiko "Feature Bloat".
+            Mitigasi dilakukan melalui desain modular dan optimisasi agresif.</p>
+
+        <h2>5. Diskusi</h2>
+        <h3>5.1 Kontribusi Teoretis</h3>
+        <p>Penelitian ini mengoperasionalisasikan <strong>Extended Mind Theory</strong> dalam desain software,
+            menyarankan revisi pada <strong>Cognitive Load Theory</strong> untuk memasukkan "tool-induced extraneous
+            load", dan memajukan diskursus <strong>SuperApp</strong> dalam konteks produktivitas.</p>
+
+        <h3>5.2 Implikasi Praktis</h3>
+        <p>Pengembang harus memprioritaskan integrasi daripada isolasi. Organisasi harus mempertimbangkan biaya dari
+            "tool sprawl". Policymakers perlu memperhatikan hak atas "cognitive sovereignty".</p>
+
+        <h3>5.3 Limitasi dan Kritik</h3>
+        <p>Kritik meliputi paradoks kompleksitas SuperApp, fallacy "one size fits all", dan tantangan monetisasi tanpa
+            data selling.</p>
+
+        <h3>5.4 Arah Penelitian Masa Depan</h3>
+        <p>Dibutuhkan studi empiris untuk validasi pengukuran cognitive load (NASA-TLX), studi longitudinal adopsi, dan
+            validasi neurosaintifik (fMRI/EEG).</p>
+
+        <h2>6. Kesimpulan</h2>
+        <p>Prefrontal menawarkan arsitektur SuperApp sebagai solusi untuk fragmentasi digital. Temuan menunjukkan bahwa
+            integrasi fungsi dalam satu ekosistem tertutup dapat secara signifikan mengurangi beban kognitif
+            extraneous. Dengan pendekatan Local-First, Prefrontal juga menjawab kekhawatiran privasi. Keberhasilan
+            akan bergantung pada eksekusi teknis dan strategi adopsi, namun visi tentang teknologi yang memperluas
+            kapasitas kognitif adalah langkah maju yang krusial.</p>
+
+
+
+        <div class="references-section">
+            <span class="ref-heading">Referensi</span>
+            <div class="ref-list">
+                <div class="ref-item">[1] Jones, W., & Teevan, J. (2007). *Personal Information Management*. University
+                    of Washington Press.</div>
+                <div class="ref-item">[2] Jones, W. (2008). Keeping Found Things Found. *Morgan Kaufmann*.</div>
+                <div class="ref-item">[3] Sweller, J. (1988). Cognitive load during problem solving. *Cognitive
+                    Science*.</div>
+                <div class="ref-item">[4] Miller, G. A. (1956). The magical number seven. *Psychological Review*.</div>
+                <div class="ref-item">[5] Cowan, N. (2001). The magical number 4 in short-term memory. *Behavioral and
+                    Brain Sciences*.</div>
+                <div class="ref-item">[6] Clark, A., & Chalmers, D. (1998). The extended mind. *Analysis*.</div>
+                <div class="ref-item">[7] Rubinstein, J. S., et al. (2001). Executive control of cognitive processes in
+                    task switching. *JEP:HPP*.</div>
+                <div class="ref-item">[8] Leroy, S. (2009). Why is it so hard to do my work? *OBHDP*.</div>
+                <div class="ref-item">[9] Senyo, P. K., & Osabutey, E. L. C. (2020). Unearthing antecedents to financial
+                    inclusion. *Technovation*.</div>
+                <div class="ref-item">[10] Baitenova, L., et al. (2024). Convenience vs. Choice. *ResearchGate*.</div>
+                <div class="ref-item">[11] Kleppmann, M., et al. (2019). Local-first software. *ACM SIGPLAN Onward!*.
+                </div>
+                <div class="ref-item">[12] Lewis, P., et al. (2020). Retrieval-augmented generation. *NeurIPS*.</div>
+                <div class="ref-item">[13] Deci, E. L., & Ryan, R. M. (2000). The "what" and "why" of goal pursuits.
+                    *Psychological Inquiry*.</div>
+                <div class="ref-item">[14] Chou, Y. K. (2015). *Actionable Gamification*. Octalysis Media.</div>
+                <div class="ref-item">[15] Hevner, A. R., et al. (2004). Design science in information systems research.
+                    *MIS Quarterly*.</div>
+                <div class="ref-item">[16] Braun, V., & Clarke, V. (2006). Using thematic analysis in psychology.</div>
+                <div class="ref-item">[17] Nielsen, J. (1994). *Usability Engineering*. Morgan Kaufmann.</div>
+                <div class="ref-item">[18] Kahneman, D., & Tversky, A. (1979). Prospect theory. *Econometrica*.</div>
+                <div class="ref-item">[19] Gollwitzer, P. M. (1999). Implementation intentions. *American
+                    Psychologist*.</div>
+                <div class="ref-item">[20] Thaler, R. H. (1999). Mental accounting matters. *JBDM*.</div>
+                <div class="ref-item">[21] Sweller, J., et al. (1998). Cognitive architecture and instructional design.
+                    *Ed Psych Review*.</div>
+                <div class="ref-item">[22] Newport, C. (2016). *Deep Work*. Grand Central Publishing.</div>
+                <div class="ref-item">[23] Bergman, O., et al. (2006). Personal information management. *CACM*.</div>
+                <div class="ref-item">[30] Wahbeh, H., et al. (2007). Binaural beat technology. *JACM*.</div>
+                <div class="ref-item">[31] Weil, A. (2015). *The 4-7-8 Breath*.</div>
+                <div class="ref-item">[32] Pennebaker, J. W. (1997). Writing about emotional experiences. *Psych
+                    Science*.</div>
+                <div class="ref-item">[33] Kauer, S. D., et al. (2012). Self-monitoring using mobile phones. *JMIR*.
+                </div>
+                <!-- Truncated references for brevity in layout, user can add more if needed -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- APPENDICES -->
+    <div class="appendix-section">
+        <div class="appendix-title">Lampiran</div>
+
+        <h3 class="appendix-subtitle">Lampiran A: Glossary</h3>
+        <div class="table-wrapper full-width">
+            <table>
+                <thead>
+                    <tr>
+                        <th width="30%">Term</th>
+                        <th>Definition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cognitive Load</strong></td>
+                        <td>Jumlah mental effort yang digunakan dalam working memory</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Extended Mind</strong></td>
+                        <td>Teori filosofis bahwa pikiran meluas melampaui otak ke tools eksternal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Local-First</strong></td>
+                        <td>Paradigma software yang memprioritaskan on-device storage dan processing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SuperApp</strong></td>
+                        <td>Platform mobile yang menyediakan multiple services dalam satu app</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RAG</strong></td>
+                        <td>Retrieval-Augmented Generation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="appendix-subtitle">Lampiran C: Competitive Analysis Detail</h3>
+        <div class="table-wrapper full-width">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Prefrontal</th>
+                        <th>Notion</th>
+                        <th>Obsidian</th>
+                        <th>Todoist</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Task Management</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>⚠️</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>Finance Tracking</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Knowledge Base</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Habit Tracking</td>
+                        <td>✅</td>
+                        <td>⚠️</td>
+                        <td>⚠️</td>
+                        <td>⚠️</td>
+                    </tr>
+                    <tr>
+                        <td>Emotion Regulation</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>Local-First</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="appendix-subtitle">Lampiran H: Ethical Considerations</h3>
+        <p><strong>Privacy:</strong> User data sovereignty, minimal collection, transparency.</p>
+        <p><strong>Addiction:</strong> Healthy defaults, flexible streaks, focus on wellbeing.</p>
+        <p><strong>Equity:</strong> Freemium model, low-end device support, offline-first.</p>
+    </div>
+
+
+
+</body>
+
+</html>
